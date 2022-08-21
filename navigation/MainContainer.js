@@ -30,7 +30,7 @@ const Stack = createStackNavigator();
 function MainContainer() {
   return (
     <NavigationContainer>
-      <Tab.Navigator
+      {<Tab.Navigator
         initialRouteName={homeName}
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -73,6 +73,7 @@ function MainContainer() {
         <Tab.Screen name={settingsName} component={SettingsScreen} />
 
       </Tab.Navigator>
+      }
     </NavigationContainer>
   );
 }

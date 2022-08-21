@@ -59,11 +59,11 @@ export default function SettingsScreen({ navigation }) {
                 />
             ))}
 
-            <TouchableWithoutFeedback onPress={() => setSteps(steps + 1)}>
+            
               <View style={styles.logoContainer}>
                 <Image style={styles.logo} resizeMode="contain" source={require("../assets/icon.png")} />
               </View>
-            </TouchableWithoutFeedback>
+            
 
             <View style={styles.soContainer}>
               <View style={styles.box}>
@@ -90,20 +90,20 @@ const styles = StyleSheet.create({
     soContainer: {
       flexDirection: "row",
       justifyContent: "center",
-      flex: 4,
+      flex: 5,
 
     },
     logoContainer: {
-      flex: 1,
+      flex: 2,
       alignItems: "center",
-      paddingVertical: 50,
+      paddingVertical: 16,
     },
     box: {
-      flex: 1,
+      flex: 5,
       flexDirection: "row",
       justifyContent: "space-between",
       maxWidth: 200,
-      paddingBottom: 50,
+      paddingBottom: 10,
     },
     logo: {
       width: "50%",

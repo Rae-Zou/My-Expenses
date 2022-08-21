@@ -96,6 +96,6 @@ const styles = StyleSheet.create({
       marginBottom: 10,
       color: "#595D58",
       fontSize: 18,
-      fontWeight: "bold",
+
     }, 
 });
