@@ -3,7 +3,7 @@ import * as WebBrowser from "expo-web-browser";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { View, Text, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Image } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { ListItem, } from 'react-native-elements';
+import ListItem  from "./ListItem";
 
 export default function SettingsScreen({ navigation }) {
     const rowItems = [
@@ -50,16 +50,14 @@ export default function SettingsScreen({ navigation }) {
       
         <View style={styles.mainContainer}>
 
-            {rowItems.map((l, i) => (
-                <ListItem key={i} bottomDivider>
-                <ListItem.Content>
-                    <ListItem.Title>{l.name}</ListItem.Title>
-                </ListItem.Content>
-                <ListItem onPress={l.onPress}></ListItem>
-            
-                </ListItem>
-                
-          ))}
+            {rowItems.map((item, index) => (
+                <ListItem
+                  key={index}
+                  showBottomLine={index !== rowItems.length - 1}
+                  onPress={item.onPress}
+                  title={item.name}
+                />
+            ))}
 
             <TouchableWithoutFeedback onPress={() => setSteps(steps + 1)}>
               <View style={styles.logoContainer}>
@@ -85,19 +83,20 @@ export default function SettingsScreen({ navigation }) {
 const styles = StyleSheet.create({
     mainContainer: {
       flex: 1,
-      paddingHorizontal: 4,
+      paddingHorizontal: 16,
       backgroundColor: 'white',
+      
     },
     soContainer: {
       flexDirection: "row",
       justifyContent: "center",
-      flex: 3,
+      flex: 4,
 
     },
     logoContainer: {
       flex: 1,
       alignItems: "center",
-      paddingVertical: 8,
+      paddingVertical: 50,
     },
     box: {
       flex: 1,

@@ -5,7 +5,7 @@ import ListItem  from "./ListItem";
 
 export default function ForecastScreen({ navigation }) {
     var costDict = {"Other" : 0, "Transport" : 0, "Food" : 0, "Rent" : 0, "Power" : 0};
-    
+    var total_cost = 0;
     const rowItems = [
         {
           title: ("🏠 Rent  $" + costDict["Rent"] ),
@@ -68,6 +68,10 @@ export default function ForecastScreen({ navigation }) {
                 borderRadius: 16
               }}
             />
+
+            <Text style={styles.forecastCost}>{("Your forecast cost for next month")}</Text>
+            <Text style={styles.forecastCost}>{("Total: 💲" + total_cost.toFixed(2))}</Text>
+
             {rowItems.map((item, index) => (
                 <ListItem
                 key={index}
@@ -82,8 +86,16 @@ export default function ForecastScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 16,
-    backgroundColor: "white",},
+    container: {
+      flex: 1,
+      paddingHorizontal: 16,
+      backgroundColor: "white",
+    },
+    forecastCost: {
+      textAlign: "center",
+      marginBottom: 10,
+      color: "#595D58",
+      fontSize: 18,
+      fontWeight: "bold",
+    }, 
 });

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TouchableOpacity, ViewStyle, StyleSheet, StyleProp } from "react-native";
+import { TouchableOpacity, ViewStyle, Text, StyleSheet, StyleProp } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 interface Props {
@@ -22,7 +22,7 @@ const ListItem: React.FC<Props> = ({ title, onPress, showTopLine, showBottomLine
 
   return (
     <TouchableOpacity onPress={onPress} style={containerStyle}>
-      {/* <Text.Secondary numberOfLines={1}>{title}</Text.Secondary> */}
+      <Text style={styles.forecastCost}>{title}</Text>
       <Ionicons name={"ios-chevron-forward-outline"} size={14} color={"#9CA6A0"} />
     </TouchableOpacity>
   );
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        paddingVertical: 18,
+        paddingVertical: 12,
         flex: 1,
       },
       topLine: {
@@ -44,6 +44,13 @@ const styles = StyleSheet.create({
         borderBottomColor: "#F0F0F0",
         borderBottomWidth: 1.6,
       },
+      forecastCost: {
+        textAlign: "center",
+        marginBottom: 10,
+        color: "#595D58",
+        fontWeight: "bold",
+      },
+
   });
 
 export default ListItem;

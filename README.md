@@ -14,3 +14,8 @@ To commit
 ```bash
 $ git commit -m "message" --no-verify
 ```
+
+To clean bundler cache:
+```
+$ yarn start --clear
+```
