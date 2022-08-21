@@ -30,7 +30,7 @@ const Stack = createStackNavigator();
 function MainContainer() {
   return (
     <NavigationContainer>
-      {<Tab.Navigator
+      <Tab.Navigator
         initialRouteName={homeName}
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -72,8 +72,13 @@ function MainContainer() {
         <Tab.Screen name={forecastName} component={ForecastScreen} />
         <Tab.Screen name={settingsName} component={SettingsScreen} />
 
+        {/* <Stack.Navigator> 
+          <Stack.Screen name={dataStoPriName} component={DataStoragePrivacyScreen} />
+          <Stack.Screen name={notificationName} component={NotificationScreen} />
+          <Stack.Screen name={logoutName} component={HomeScreen} />
+        </Stack.Navigator> */}
+
       </Tab.Navigator>
-      }
     </NavigationContainer>
   );
 }
