@@ -8,16 +8,22 @@ export default function SettingsScreen({ navigation }) {
     const rowItems = [
         {
           name: ("Data Storage and Privacy"),   //security controls - V2: Data Storage and Privacy Requirements
-          onPress: () =>navigation.navigate('Home'),   //TODO: update the navigator                 
+          onPress: () =>navigation.navigate('DataStorageandPrivacy'),   //TODO: update the navigator                 
         },
+
         {
           name: ("Notifications"),
-          onPress: () =>navigation.navigate('Home'),  //TODO: update the navigator
+          onPress: () =>navigation.navigate('Notification'),  //TODO: update the navigator
         },
     
         {
           name: ("Terms of use"),             //security controls - V1: Architecture, Design and Threat Modeling Requirements
           onPress: () => WebBrowser.openBrowserAsync("https://docs.google.com/document/d/18TYJovKBJr3s1_jrHjKgsGaeAwqKzUsR6yNgPV2sxOs/edit?usp=sharing"),
+        },
+
+        {
+          name: ("Log out"),             //security controls - V1: Architecture, Design and Threat Modeling Requirements
+          onPress: () =>navigation.navigate('Logout'),  //TODO: update the navigator,
         },
       ];
 
@@ -67,7 +73,6 @@ export default function SettingsScreen({ navigation }) {
               </View>
             </View>
 
-
         </View>
     );
 }
@@ -82,7 +87,7 @@ const styles = StyleSheet.create({
     soContainer: {
       flexDirection: "row",
       justifyContent: "center",
-      flex: 4,
+      flex: 3,
 
     },
     logoContainer: {

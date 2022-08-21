@@ -16,6 +16,10 @@ const expensesName = "Expenses";
 const settingsName = "Settings";
 const forecastName = "Forecast";
 const addName = "Add";
+const dataStoPriName = "DataStorageandPrivacy";
+const notificationName = "Notification";
+const logoutName = "Logout";
+
 
 const Tab = createBottomTabNavigator();
 
