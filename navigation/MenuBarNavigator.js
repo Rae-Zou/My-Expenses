@@ -4,14 +4,16 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+//Navigators
+import SettingsNavigator from "./SettingsNavigator";
+
 // Screens
 import HomeScreen from '../screens/HomeScreen';
 import ExpensesScreen from '../screens/ExpensesScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import ForecastScreen from '../screens/ForecastScreen';
 import AddExpensesScreen from '../screens/AddExpensesScreen';
-import DataStoragePrivacyScreen from '../screens/DataStoragePrivacyScreen';
-import NotificationScreen from '../screens/NotificationScreen';
+
 
 //Screen names
 const homeName = "Home";
@@ -19,17 +21,12 @@ const expensesName = "Expenses";
 const settingsName = "Settings";
 const forecastName = "Forecast";
 const addName = "Add";
-const dataStoPriName = "DataStorageandPrivacy";
-const notificationName = "Notification";
-const logoutName = "Logout";
 
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
 
 function MenuBarNavigator() {
   return (
-    <NavigationContainer>
       <Tab.Navigator
         initialRouteName={homeName}
         screenOptions={({ route }) => ({
@@ -72,14 +69,9 @@ function MenuBarNavigator() {
         <Tab.Screen name={forecastName} component={ForecastScreen} />
         <Tab.Screen name={settingsName} component={SettingsScreen} />
 
-        {/* <Stack.Navigator> 
-          <Stack.Screen name={dataStoPriName} component={DataStoragePrivacyScreen} />
-          <Stack.Screen name={notificationName} component={NotificationScreen} />
-          <Stack.Screen name={logoutName} component={HomeScreen} />
-        </Stack.Navigator> */}
 
       </Tab.Navigator>
-    </NavigationContainer>
+
   );
 }
 
