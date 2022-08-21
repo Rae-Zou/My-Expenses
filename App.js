@@ -1,5 +1,5 @@
 import * as React from 'react';
-import MainContainer from './navigation/MainContainer';
+import MenuBarNavigator from './navigation/MenuBarNavigator';
 import { LogBox } from 'react-native';
 
 LogBox.ignoreLogs([
@@ -10,7 +10,7 @@ LogBox.ignoreAllLogs();//Ignore all log notifications
 
 function App() {
   return (
-    <MainContainer/>
+    <MenuBarNavigator/>
   );
 }
 

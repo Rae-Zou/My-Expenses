@@ -5,6 +5,10 @@ import { View, Text, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Ima
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import ListItem  from "./ListItem";
 
+const openMyData = (navigation) => (props = {}) => {
+  navigation.push("MyData", props);
+};
+
 export default function SettingsScreen({ navigation }) {
     const rowItems = [
         {

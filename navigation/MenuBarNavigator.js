@@ -27,7 +27,7 @@ const logoutName = "Logout";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-function MainContainer() {
+function MenuBarNavigator() {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -83,4 +83,4 @@ function MainContainer() {
   );
 }
 
-export default MainContainer;
+export default MenuBarNavigator;
