@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -9,6 +10,8 @@ import ExpensesScreen from '../screens/ExpensesScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import ForecastScreen from '../screens/ForecastScreen';
 import AddExpensesScreen from '../screens/AddExpensesScreen';
+import DataStoragePrivacyScreen from '../screens/DataStoragePrivacyScreen';
+import NotificationScreen from '../screens/NotificationScreen';
 
 //Screen names
 const homeName = "Home";
@@ -22,6 +25,7 @@ const logoutName = "Logout";
 
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 function MainContainer() {
   return (

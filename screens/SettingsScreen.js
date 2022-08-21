@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import * as WebBrowser from "expo-web-browser";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { View, Text, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Image } from 'react-native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { ListItem, } from 'react-native-elements'
 
 export default function SettingsScreen({ navigation }) {
     const rowItems = [
         {
           name: ("Data Storage and Privacy"),   //security controls - V2: Data Storage and Privacy Requirements
-          onPress: () =>navigation.navigate('DataStorageandPrivacy'),   //TODO: update the navigator                 
+          onPress: () =>navigation.navigate('Expenses'),   //TODO: update the navigator                 
         },
 
         {
           name: ("Notifications"),
-          onPress: () =>navigation.navigate('Notification'),  //TODO: update the navigator
+          onPress: () =>navigation.navigate('Expenses'),  //TODO: update the navigator
         },
     
         {
@@ -23,7 +24,7 @@ export default function SettingsScreen({ navigation }) {
 
         {
           name: ("Log out"),             //security controls - V1: Architecture, Design and Threat Modeling Requirements
-          onPress: () =>navigation.navigate('Logout'),  //TODO: update the navigator,
+          onPress: () =>navigation.navigate('Expenses'),  //TODO: update the navigator,
         },
       ];
 
@@ -43,7 +44,10 @@ export default function SettingsScreen({ navigation }) {
         ];
 
 
+
+
     return (
+      
         <View style={styles.mainContainer}>
 
             {rowItems.map((l, i) => (
