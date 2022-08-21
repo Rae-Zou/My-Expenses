@@ -5,13 +5,17 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // Screens
 import HomeScreen from '../screens/HomeScreen';
-import DetailsScreen from '../screens/DetailsScreen';
+import ExpensesScreen from '../screens/ExpensesScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import ForecastScreen from '../screens/ForecastScreen';
+import AddExpensesScreen from '../screens/AddExpensesScreen';
 
 //Screen names
 const homeName = "Home";
-const detailsName = "Details";
+const expensesName = "Expenses";
 const settingsName = "Settings";
+const forecastName = "Forecast";
+const addName = "Add";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,10 +31,12 @@ function MainContainer() {
 
             if (rn === homeName) {
               iconName = focused ? 'home' : 'home-outline';
-
-            } else if (rn === detailsName) {
-              iconName = focused ? 'list' : 'list-outline';
-
+            } else if (rn === expensesName) {
+              iconName = focused ? 'list' : 'md-stats-chart-outline';
+            } else if (rn === addName) {
+              iconName = focused ? 'add' : 'md-add-circle';
+            } else if (rn === forecastName) {
+              iconName = focused ? 'forecast' : 'md-trending-up-outline';
             } else if (rn === settingsName) {
               iconName = focused ? 'settings' : 'settings-outline';
             }
@@ -50,12 +56,12 @@ function MainContainer() {
             "paddingBottom": 10,
             "fontSize": 10
           },
-        })}
-
-        >
+        })}>
 
         <Tab.Screen name={homeName} component={HomeScreen} />
-        <Tab.Screen name={detailsName} component={DetailsScreen} />
+        <Tab.Screen name={expensesName} component={ExpensesScreen} />
+        <Tab.Screen name={addName} component={AddExpensesScreen} />
+        <Tab.Screen name={forecastName} component={ForecastScreen} />
         <Tab.Screen name={settingsName} component={SettingsScreen} />
 
       </Tab.Navigator>
