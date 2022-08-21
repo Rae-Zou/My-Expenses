@@ -32,11 +32,11 @@ function MainContainer() {
             if (rn === homeName) {
               iconName = focused ? 'home' : 'home-outline';
             } else if (rn === expensesName) {
-              iconName = focused ? 'list' : 'md-stats-chart-outline';
+              iconName = focused ? 'stats-chart' : 'md-stats-chart-outline';
             } else if (rn === addName) {
-              iconName = focused ? 'add' : 'md-add-circle';
+              iconName = focused ? 'md-add-circle' : 'md-add-circle-outline';
             } else if (rn === forecastName) {
-              iconName = focused ? 'forecast' : 'md-trending-up-outline';
+              iconName = focused ? 'md-trending-up' : 'md-trending-up-outline';
             } else if (rn === settingsName) {
               iconName = focused ? 'settings' : 'settings-outline';
             }
@@ -50,7 +50,7 @@ function MainContainer() {
             },
             null
           ],
-          tabBarActiveTintColor: "tomato",
+          tabBarActiveTintColor: "tomato", //#FFC727
           tabBarInactiveTintColor: "grey",
           tabBarLabelStyle: {
             "paddingBottom": 10,
