@@ -9,7 +9,7 @@ export default function SettingsScreen({ navigation }) {
     const rowItems = [
         {
           name: ("Data Storage and Privacy"),   //security controls - V2: Data Storage and Privacy Requirements
-          onPress: () =>navigation.navigate('Expenses'),   //TODO: update the navigator                 
+          onPress: () =>navigation.navigate('NotificationScreen'),   //TODO: update the navigator                 
         },
 
         {
