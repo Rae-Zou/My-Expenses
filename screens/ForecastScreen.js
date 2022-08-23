@@ -57,12 +57,12 @@ export default function ForecastScreen({ navigation }) {
         <ScrollView style={styles.container}>
             <LineChart
               data={data}
-              width={Dimensions.get("window").width < 400 ? Dimensions.get("window").width  - 10 : 200}
+              width={Dimensions.get("window").width}
               height={256}
               verticalLabelRotation={0}
               chartConfig={chartConfig}
               bezier
-              fromZero ={ true}
+              fromZero ={true}
               style={{
                 marginVertical: 18,
                 borderRadius: 16
