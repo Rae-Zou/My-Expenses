@@ -6,6 +6,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 //Navigators
 import SettingsNavigator from "./SettingsNavigator";
+import ForecastNavigator from "./ForecastNavigator";
+import AddExpenseNavigator from "./AddExpenseNavigator";
+import ExpensesNavigator from "./ExpensesNavigator";
+import HomeNavigator from "./HomeNavigator";
 
 // Screens
 import HomeScreen from '../screens/HomeScreen';
@@ -24,6 +28,7 @@ const addName = "Add";
 
 
 const Tab = createBottomTabNavigator();
+
 
 function MenuBarNavigator() {
   return (
@@ -63,11 +68,11 @@ function MenuBarNavigator() {
           },
         })}>
 
-        <Tab.Screen name={homeName} component={HomeScreen} />
-        <Tab.Screen name={expensesName} component={ExpensesScreen} />
-        <Tab.Screen name={addName} component={AddExpensesScreen} />
-        <Tab.Screen name={forecastName} component={ForecastScreen} />
-        <Tab.Screen name={settingsName} component={SettingsScreen} />
+        <Tab.Screen name={homeName} component={HomeNavigator} />
+        <Tab.Screen name={expensesName} component={ExpensesNavigator} />
+        <Tab.Screen name={addName} component={AddExpenseNavigator} />
+        <Tab.Screen name={forecastName} component={ForecastNavigator} />
+        <Tab.Screen name={settingsName} component={SettingsNavigator} />
 
 
       </Tab.Navigator>

@@ -8,10 +8,11 @@ import NotificationScreen from '../screens/NotificationScreen';
 const Stack = createStackNavigator();
 
 function SettingsNavigator() {
-    console.log("SettingsNavigator");
+  return (
     <Stack.Navigator>
       <Stack.Screen
         name="Settings"
+        options={{ headerShown: false }}
         component={SettingsScreen}
       />
       
@@ -26,7 +27,7 @@ function SettingsNavigator() {
       />
   
     </Stack.Navigator>
-    console.log("SettingsNavigato endr");
+ );
 };
   
 export default SettingsNavigator;
