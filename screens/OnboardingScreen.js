@@ -52,7 +52,6 @@ const styles =  StyleSheet.create({
         textAlign: "center",
         paddingVertical: 10,
         color: "#595D58",
-        fontWeight: "bold",
     },
     buttonView: {
         position: "absolute",
