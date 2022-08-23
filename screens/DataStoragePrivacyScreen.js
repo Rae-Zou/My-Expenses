@@ -24,7 +24,7 @@ const styles =  StyleSheet.create({
     },
     paragraph: {
       marginTop: 5,
-      paddingVertical: 5,
+      paddingVertical: 10,
       fontSize: 15,
       fontWeight: 'bold',
       color: "#595D58",

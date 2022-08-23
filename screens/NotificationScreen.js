@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Layout } from 'react-native';
-import { useDispatch, useSelector } from "react-redux";
+import { View, Text, StyleSheet, Switch } from 'react-native';
+// import { useDispatch, useSelector } from "react-redux";
 
 const notification = {
     content: {
@@ -16,11 +16,20 @@ const notification = {
   };
 
 export default function NotificationScreen({ navigation }) {
+    // const dispatch = useDispatch();
+    // const notificationEnabled = useSelector(state => state.notification.enabled);
+    // const notification = useSelector(state => state.notification.notification);
+    const [isEnabled, setEnabled] = React.useState(true);
+    // const [notificationState, setNotificationState] = React.useState(notification);
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text
-                onPress={() => navigation.navigate('Home')}
-                style={{ fontSize: 26, fontWeight: 'bold' }}>Notification Screen</Text>
+        <View style={styles.container}>
+            <Text style={styles.intro}>
+                  Receive a notification every night at 9 p.m to remind you to add your daily expenses.
+                </Text>
+            <View style={styles.rowContainer}>
+              <Text style={styles.text}> Activated </Text>
+              <Switch value={isEnabled} onValueChange={(value) => setEnabled(value)}  />
+            </View>
         </View>
     );
 };
@@ -33,7 +42,8 @@ const styles =  StyleSheet.create({
 
     },
     intro: {
-        paddingTop: 30,
+        paddingTop: 10,
+        fontSize: 16,
     },
     rowContainer: {
         flexDirection: "row",
@@ -41,4 +51,7 @@ const styles =  StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
     },
+    text:{
+      fontWeight: "bold",
+    }
   });
