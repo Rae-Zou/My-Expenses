@@ -16,14 +16,14 @@ const settingsName = "Settings";
 const forecastName = "Forecast";
 const addName = "Add";
 
-
 const Tab = createBottomTabNavigator();
-
 
 function MenuBarNavigator() {
   return (
       <Tab.Navigator
+
         initialRouteName={homeName}
+
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;

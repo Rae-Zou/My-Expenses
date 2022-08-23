@@ -8,12 +8,12 @@ export default function SettingsScreen({ navigation }) {
     const rowItems = [
         {
           name: ("Data Storage and Privacy"),   //security controls - V2: Data Storage and Privacy Requirements
-          onPress: () =>navigation.navigate('Data Storage and Privacy'),   //TODO: update the navigator                 
+          onPress: () =>navigation.navigate('Data Storage and Privacy'),                    
         },
 
         {
           name: ("Notifications"),
-          onPress: () =>navigation.navigate('Notifications'),  //TODO: update the navigator
+          onPress: () =>navigation.navigate('Notifications'),  
         },
     
         {
@@ -23,7 +23,7 @@ export default function SettingsScreen({ navigation }) {
 
         {
           name: ("Log out"),             //security controls - V1: Architecture, Design and Threat Modeling Requirements
-          onPress: () =>navigation.navigate('Home'),  //TODO: update the navigator,
+          onPress: () =>navigation.navigate('Onboarding'),  
         },
       ];
 
@@ -41,9 +41,6 @@ export default function SettingsScreen({ navigation }) {
             url: "https://www.facebook.com/",
         },
         ];
-
-
-
 
     return (
       

@@ -43,13 +43,19 @@ const styles = StyleSheet.create({
     },
     textView: {
         alignItems: "center",
-        flex: 3,
+        flex: 1,
         justifyContent: "center",
     },
+    header: {
+        fontSize: 24,
+        fontWeight: "bold",
+        color: "#595D58",
+        paddingVertical: 1,
+    },
     paragraph: {
-        flex: 5,
+        flex: 1,
         textAlign: "center",
-        paddingVertical: 20,
+        paddingVertical: 10,
         fontWeight: "bold",
         fontSize: 50,
     },

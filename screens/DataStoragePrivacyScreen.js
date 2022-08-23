@@ -5,7 +5,6 @@ export default function DataStoragePrivacyScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <Text
-                onPress={() => navigation.navigate('Home')}
                 style={styles.paragraph}>
                     Based on Mobile AppSec Verification Standard: 
                     Data Storage and Privacy Requirements, 
@@ -26,7 +25,6 @@ const styles =  StyleSheet.create({
       marginTop: 5,
       paddingVertical: 10,
       fontSize: 15,
-      fontWeight: 'bold',
       color: "#595D58",
       justifyContent: "space-between",
     },

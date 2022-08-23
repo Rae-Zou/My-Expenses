@@ -1,26 +1,10 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Switch } from 'react-native';
-// import { useDispatch, useSelector } from "react-redux";
-
-const notification = {
-    content: {
-      title: ("Daliy Expenses"),
-      body: ("Here is a kindly reminder to add your expense for this week."),
-    },
-    trigger: {
-      weekday: 1,
-      hour: 21,
-      minute: 0,
-      repeats: true,
-    },
-  };
 
 export default function NotificationScreen({ navigation }) {
-    // const dispatch = useDispatch();
-    // const notificationEnabled = useSelector(state => state.notification.enabled);
-    // const notification = useSelector(state => state.notification.notification);
+
     const [isEnabled, setEnabled] = React.useState(true);
-    // const [notificationState, setNotificationState] = React.useState(notification);
+
     return (
         <View style={styles.container}>
             <Text style={styles.intro}>
