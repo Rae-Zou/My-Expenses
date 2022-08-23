@@ -4,8 +4,6 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import ListItem  from "./ListItem";
 
-
-
 export default function SettingsScreen({ navigation }) {
     const rowItems = [
         {
