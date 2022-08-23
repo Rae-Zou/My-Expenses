@@ -1,23 +1,13 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-//Navigators
+// Screens Navigators
 import SettingsNavigator from "./SettingsNavigator";
 import ForecastNavigator from "./ForecastNavigator";
 import AddExpenseNavigator from "./AddExpenseNavigator";
 import ExpensesNavigator from "./ExpensesNavigator";
 import HomeNavigator from "./HomeNavigator";
-
-// Screens
-import HomeScreen from '../screens/HomeScreen';
-import ExpensesScreen from '../screens/ExpensesScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import ForecastScreen from '../screens/ForecastScreen';
-import AddExpensesScreen from '../screens/AddExpensesScreen';
-
 
 //Screen names
 const homeName = "Home";

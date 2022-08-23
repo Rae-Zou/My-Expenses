@@ -11,7 +11,7 @@ function SettingsNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Settings"
+        name="SettingsStack"
         options={{ headerShown: false }}
         component={SettingsScreen}
       />
@@ -22,7 +22,7 @@ function SettingsNavigator() {
       />
 
       <Stack.Screen 
-        name="dataStoPriName" 
+        name="Data Storage and Privacy" 
         component={DataStoragePrivacyScreen} 
       />
   

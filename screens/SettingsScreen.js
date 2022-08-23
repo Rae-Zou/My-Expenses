@@ -2,7 +2,6 @@ import React from 'react';
 import * as WebBrowser from "expo-web-browser";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import ListItem  from "./ListItem";
 
 
@@ -11,12 +10,12 @@ export default function SettingsScreen({ navigation }) {
     const rowItems = [
         {
           name: ("Data Storage and Privacy"),   //security controls - V2: Data Storage and Privacy Requirements
-          onPress: () =>navigation.navigate('DataStoragePrivacyScreen'),   //TODO: update the navigator                 
+          onPress: () =>navigation.navigate('Data Storage and Privacy'),   //TODO: update the navigator                 
         },
 
         {
           name: ("Notifications"),
-          onPress: () =>navigation.navigate('NotificationScreen'),  //TODO: update the navigator
+          onPress: () =>navigation.navigate('Notifications'),  //TODO: update the navigator
         },
     
         {
