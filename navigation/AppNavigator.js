@@ -5,18 +5,18 @@ import { createStackNavigator } from "@react-navigation/stack";
 import MenuBarNavigator from "./MenuBarNavigator";
 import OnBoardingNavigator from "./OnBoardingNavigator";
 
-const AppStack = createStackNavigator();
+const Stack = createStackNavigator();
 
 function AppNavigator() {
     return (
       <NavigationContainer>
-        <AppStack.Navigator>
-          <AppStack.Screen
+        <Stack.Navigator>
+          <Stack.Screen
             name="AppStack"
             options={{ headerShown: false }}
             component={OnBoardingNavigator}
           />
-        </AppStack.Navigator>
+        </Stack.Navigator>
       </NavigationContainer>
     );
   };
