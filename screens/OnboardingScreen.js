@@ -56,7 +56,7 @@ const styles =  StyleSheet.create({
     },
     buttonView: {
         position: "absolute",
-        bottom: 300,
+        bottom: Dimensions.get("window").width - 150,
         right: 0,
         left: 0,
         marginHorizontal: 16,
