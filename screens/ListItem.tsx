@@ -22,7 +22,7 @@ const ListItem: React.FC<Props> = ({ title, onPress, showTopLine, showBottomLine
 
   return (
     <TouchableOpacity onPress={onPress} style={containerStyle}>
-      <Text style={styles.forecastCost}>{title}</Text>
+      <Text style={styles.itemnames}>{title}</Text>
       <Ionicons name={"ios-chevron-forward-outline"} size={14} color={"#9CA6A0"} />
     </TouchableOpacity>
   );
@@ -44,11 +44,12 @@ const styles = StyleSheet.create({
         borderBottomColor: "#F0F0F0",
         borderBottomWidth: 1.6,
       },
-      forecastCost: {
+      itemnames: {
         textAlign: "center",
         marginBottom: 10,
+        fontSize: 15,
         color: "#595D58",
-        fontWeight: "bold",
+
       },
 
   });
