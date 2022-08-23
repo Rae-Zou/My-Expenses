@@ -23,11 +23,12 @@ const styles =  StyleSheet.create({
 
     },
     paragraph: {
-      marginTop: 12,
-      paddingVertical: 10,
+      marginTop: 5,
+      paddingVertical: 5,
       fontSize: 15,
       fontWeight: 'bold',
       color: "#595D58",
+      justifyContent: "space-between",
     },
     button: {
       marginTop: 20,

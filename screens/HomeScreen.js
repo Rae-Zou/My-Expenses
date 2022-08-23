@@ -4,7 +4,7 @@ import AppButton  from "./AppButton";
 
 
 export default function HomeScreen({ navigation }) {
-    const handlepress = () => {console.log("pressed")}
+
     return (
         <ScrollView style={styles.container}>
             <View style={styles.icontainer}>
@@ -19,7 +19,7 @@ export default function HomeScreen({ navigation }) {
                 title="Add my first expense" 
                 size="sm" 
                 backgroundColor="#007bff" 
-                onPress={() =>navigation.navigate('AddExpensesScreen')}
+                onPress={() =>navigation.navigate('AddExpenses')}
             />
         </ScrollView>
     );
