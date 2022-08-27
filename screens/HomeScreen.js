@@ -55,16 +55,11 @@ const styles = StyleSheet.create({
     paragraph: {
         flex: 1,
         textAlign: "center",
-        paddingVertical: 10,
-        fontWeight: "bold",
-        fontSize: 50,
+        paddingVertical: 4,
+        fontSize: 15,
     },
-
     button: {
         marginVertical: 20,
     },
-    paragraph: {
-        textAlign: "center",
-        paddingVertical: 4,
-    },
+
 });

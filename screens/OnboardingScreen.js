@@ -13,7 +13,7 @@ export default function OnboardingScreen({ navigation }) {
                 <Image style={styles.image} resizeMode="contain" source={require("../assets/onboarding.png")} />
             </View>
             <View style={styles.termsOfUseView}>
-                <Text style={styles.text}>{("Welcome to My.Expenses")}</Text>
+                <Text style={styles.header}>{("Welcome to My.Expenses")}</Text>
                 <Text style={styles.text}>
                     {("By proceeding, you are agreeing to our terms of use.")}
                 </Text>
@@ -27,7 +27,7 @@ export default function OnboardingScreen({ navigation }) {
                         title="I agree" 
                         size="sm" 
                         backgroundColor="#007bff" 
-                        onPress={() =>navigation.navigate('AppStack')}
+                        onPress={() =>navigation.navigate('Login')}
                     />
                 </View>
             </View>
@@ -47,11 +47,19 @@ const styles =  StyleSheet.create({
         alignItems: "center",
         flex: 2,
     },
+    header: {
+        paddingVertical: 16,
+        textAlign: "center",
+        paddingVertical: 10,
+        color: "#595D58",
+        marginTop: 20
+    },
     text: {
         paddingVertical: 16,
         textAlign: "center",
         paddingVertical: 10,
         color: "#595D58",
+        marginTop: 10
     },
     buttonView: {
         position: "absolute",
@@ -69,6 +77,7 @@ const styles =  StyleSheet.create({
         maxWidth: 320,
         width: "100%",
         height: Dimensions.get("window").width - 50,
+        marginTop: 20
     },
     read: { 
         textAlign: "center",

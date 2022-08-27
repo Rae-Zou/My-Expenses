@@ -1,26 +1,28 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import LoginNavigator from "./LoginNavigator";
-import OnboardingScreen from "../screens/OnboardingScreen";
+
+import MenuBarNavigator from "./MenuBarNavigator";
+import LoginScreen from "../screens/LoginScreen";
 
 const Stack = createStackNavigator();
 
-function OnBoardingNavigator (){
+function LoginNavigator (){
     return (
       <Stack.Navigator>
         <Stack.Screen
-          name="Onboarding"
+          name="Login"
           options={{ headerShown: false }}
-          component={OnboardingScreen}
+          component={LoginScreen}
         />
         <Stack.Screen
-            name="Login"
+            name="AppStack"
             options={{ headerShown: false }}
-            component={LoginNavigator}
+            component={MenuBarNavigator}
         />
+
       </Stack.Navigator>
     );
 };
 
-export default OnBoardingNavigator;
+export default LoginNavigator;

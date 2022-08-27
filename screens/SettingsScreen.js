@@ -23,7 +23,7 @@ export default function SettingsScreen({ navigation }) {
 
         {
           name: ("Log out"),             //security controls - V1: Architecture, Design and Threat Modeling Requirements
-          onPress: () =>navigation.navigate('Onboarding'),  
+          onPress: () =>navigation.navigate('Logout'),  
         },
       ];
 

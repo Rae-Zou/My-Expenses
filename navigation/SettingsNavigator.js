@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import SettingsScreen from '../screens/SettingsScreen';
 import DataStoragePrivacyScreen from '../screens/DataStoragePrivacyScreen';
 import NotificationScreen from '../screens/NotificationScreen';
+import LoginScreen from '../screens/LoginScreen';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,11 @@ function SettingsNavigator() {
       <Stack.Screen 
         name="Data Storage and Privacy" 
         component={DataStoragePrivacyScreen} 
+      />
+
+      <Stack.Screen 
+        name="Logout" 
+        component={LoginScreen} 
       />
   
     </Stack.Navigator>
