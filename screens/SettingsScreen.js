@@ -2,7 +2,7 @@ import React from 'react';
 import * as WebBrowser from "expo-web-browser";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import ListItem  from "./ListItem";
+import ListItem  from "../components/ListItem";
 
 export default function SettingsScreen({ navigation }) {
     const rowItems = [

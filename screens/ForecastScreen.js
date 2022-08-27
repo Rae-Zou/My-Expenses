@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {LineChart} from "react-native-chart-kit";
 import { ScrollView, View, Text, StyleSheet, Dimensions } from 'react-native';
-import ListItem  from "./ListItem";
+import ListItem  from "../components/ListItem";
 
 export default function ForecastScreen({ navigation }) {
     var costDict = {"Other" : 0, "Transport" : 0, "Food" : 0, "Rent" : 0, "Power" : 0};

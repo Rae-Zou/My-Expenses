@@ -2,7 +2,7 @@ import React from "react";
 import { SafeAreaView, View, TouchableOpacity, Image, StyleSheet, Text, Dimensions } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 
-import AppButton  from "./AppButton";
+import AppButton  from "../components/AppButton";
 
 export default function OnboardingScreen({ navigation }) {
 
