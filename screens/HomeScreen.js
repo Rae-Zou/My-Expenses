@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flex: 1,
         justifyContent: "center",
+        
     },
     header: {
         fontSize: 24,
@@ -57,6 +58,8 @@ const styles = StyleSheet.create({
         textAlign: "center",
         paddingVertical: 4,
         fontSize: 15,
+        color: "#595D58",
+        marginTop: 5,
     },
     button: {
         marginVertical: 20,

@@ -42,7 +42,6 @@ const LoginScreen = () => {
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior="padding"
     >
 
       <View style={styles.inputContainer}>
@@ -60,7 +59,7 @@ const LoginScreen = () => {
           value={password}
           onChangeText={text => setPassword(text)}
           style={styles.input}
-          secureTextEntry
+          secureTextEntry                             //security controls - V1: Architecture, Design and Threat Modeling Requirements
         />
       </View>
 
