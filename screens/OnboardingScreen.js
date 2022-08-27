@@ -26,7 +26,6 @@ export default function OnboardingScreen({ navigation }) {
                     <AppButton 
                         title="I agree" 
                         size="sm" 
-                        backgroundColor="#007bff" 
                         onPress={() =>navigation.navigate('Login')}
                     />
                 </View>
@@ -84,7 +83,6 @@ const styles =  StyleSheet.create({
     read: { 
         textAlign: "center",
         paddingVertical: 10,
-        color: "#81B2CA",
-
+        color: "#4BB377",
     },
   });
