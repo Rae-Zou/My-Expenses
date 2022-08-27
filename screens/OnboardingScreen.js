@@ -52,7 +52,9 @@ const styles =  StyleSheet.create({
         textAlign: "center",
         paddingVertical: 10,
         color: "#595D58",
-        marginTop: 20
+        marginTop: 20,
+        fontSize: 20,
+        fontWeight: "bold",
     },
     text: {
         paddingVertical: 16,
