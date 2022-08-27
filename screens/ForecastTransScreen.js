@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function DataStoragePrivacyScreen({ navigation }) {
+export default function ForecastTransScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <Text

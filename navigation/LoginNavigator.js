@@ -11,7 +11,7 @@ function LoginNavigator (){
     return (
       <Stack.Navigator>
         <Stack.Screen
-          name="Login"
+          name="AppLogin"
           options={{ headerShown: false }}
           component={LoginScreen}
         />

@@ -15,7 +15,7 @@ function OnBoardingNavigator (){
           component={OnboardingScreen}
         />
         <Stack.Screen
-            name="Login"
+            name="MyLogin"
             options={{ headerShown: false }}
             component={LoginNavigator}
         />

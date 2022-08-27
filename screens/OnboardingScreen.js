@@ -26,7 +26,7 @@ export default function OnboardingScreen({ navigation }) {
                     <AppButton 
                         title="I agree" 
                         size="sm" 
-                        onPress={() =>navigation.navigate('Login')}
+                        onPress={() =>navigation.navigate('MyLogin')}
                     />
                 </View>
             </View>

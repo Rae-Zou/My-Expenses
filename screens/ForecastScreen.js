@@ -9,23 +9,23 @@ export default function ForecastScreen({ navigation }) {
     const rowItems = [
         {
           title: ("🏠 Rent  $" + costDict["Rent"] ),
-          onPress: navigator.openRentData,
+          onPress: () =>navigation.navigate('Expense for Rent'), 
         },
         {
           title: ("🍴 Food  $" + costDict["Food"]),
-          onPress: navigator.openFoodData,
+          onPress: () =>navigation.navigate('Expense for Food'),
         },
         {
           title: ("💡 Power  $" + costDict["Power"]),
-          onPress: navigator.openPowerData,
+          onPress: () =>navigation.navigate('Expense for Power'),
         },
         {
           title: ("🚌 Transport  $" + costDict["Transport"]),
-          onPress: navigator.openTransData,
+          onPress: () =>navigation.navigate('Expense for Transport'),
         },
         {
           title: ("Other  $" + costDict["Other"]),
-          onPress: navigator.openOtherData,
+          onPress: () =>navigation.navigate('Expense for Other'),
         },
     
     ];
