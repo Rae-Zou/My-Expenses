@@ -37,7 +37,8 @@
     "react-native-settings-list": "^1.8.0",
     "react-native-svg": "12.3.0",
     "react-native-web": "~0.18.7",
-    "react-redux": "^8.0.2"
+    "react-redux": "^8.0.2",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

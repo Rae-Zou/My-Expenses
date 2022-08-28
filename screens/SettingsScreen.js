@@ -9,7 +9,8 @@ export default function SettingsScreen({ navigation }) {
   const handleLogout = () => {
     auth
       .signOut()
-      .then(() => navigation.replace('Logout'));
+
+      .then(() => navigation.popToTop());
     
   }
 
