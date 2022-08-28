@@ -3,8 +3,16 @@ import * as WebBrowser from "expo-web-browser";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import ListItem  from "../components/ListItem";
+import { auth } from '../firebase'
 
 export default function SettingsScreen({ navigation }) {
+  const handleLogout = () => {
+    auth
+      .signOut()
+      .then(() => navigation.replace('Logout'));
+    
+  }
+
     const rowItems = [
         {
           name: ("Data Storage and Privacy"),   //security controls - V2: Data Storage and Privacy Requirements
@@ -23,7 +31,7 @@ export default function SettingsScreen({ navigation }) {
 
         {
           name: ("Log out"),             //security controls - V1: Architecture, Design and Threat Modeling Requirements
-          onPress: () => navigation.navigate('Logout'),  
+          onPress: handleLogout,  
         },
       ];
 

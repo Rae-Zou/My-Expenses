@@ -6,6 +6,8 @@ import DataStoragePrivacyScreen from '../screens/DataStoragePrivacyScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import LoginScreen from '../screens/LoginScreen';
 
+import LoginNavigator from "./LoginNavigator";
+
 const Stack = createStackNavigator();
 
 function SettingsNavigator() {
@@ -29,7 +31,8 @@ function SettingsNavigator() {
 
       <Stack.Screen 
         name="Logout" 
-        component={LoginScreen} 
+        options={{ headerShown: false }}
+        component={LoginNavigator} 
       />
   
     </Stack.Navigator>

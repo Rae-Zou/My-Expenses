@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   logo: {
     alignSelf: "center",
     width: "50%",
-    justifyContent: 'center',
+  
     alignItems: 'center',
   },
 })
