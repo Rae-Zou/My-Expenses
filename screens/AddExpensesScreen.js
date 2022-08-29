@@ -4,78 +4,11 @@ import { StyleSheet, Text, View,
          Button, TextInput, SafeAreaView,
          Alert, ScrollView, TouchableWithoutFeedback,
          Keyboard, Image } from 'react-native';
-import SelectList from 'react-native-dropdown-select-list'
 
-let ind = 6;
-
-const Inputbox = () => {
-
-  const[category, setCategory] = useState([
-    {key:'1',value:'Add new category'},
-    {key:'2',value:'food'},
-    {key:'3',value:'drinks'},
-    {key:'4',value:'rent'},
-    {key:'5',value:'house'},
-    {key:'6',value:'bus'}]
-    );
-
-  const[selected, setSelected] = useState("Select a category");
-
-  const dosome = (index) => {
-    if(index == 1){
-      ind = ind + 1;
-      Alert.prompt("Add a new category","Enter category",
-      (text) => setCategory([...category, {key:ind,value:text}]))  
-      console.log(category);  
-    }
-  }
-
-  return (
-    <View>
-      <Text style = {styles.inputHeader}>Item number 1:</Text>
-
-      <Text>Item's category</Text>
-      <SelectList 
-        boxStyles = {styles.input}
-        data = {category} 
-        setSelected={setSelected}
-        placeholder = "Select a category"
-        onSelect = {() => dosome(selected)}
-      >
-      </SelectList>
-
-      <Text>Item's name:</Text>
-      <TextInput 
-        style = {styles.input} 
-        placeholder = "   E.g: chicken thigh"
-      /> 
-
-      <Text>Item's price:</Text>
-      <TextInput
-        keyboardAppearance= 'dark'
-        keyboardType='numeric'
-        style = {styles.input} 
-        placeholder = "   E.g: $10"
-        
-      />
-
-      <Text></Text>
-
-    </View>
-  );
-}
-
-
-
-export default function AddExpenseScreen() {
+export default function AddExpenseScreen({ navigation }) {
   
-  const[inputBox, setInputBox] = useState(['item 1']);
-
-  const[texts, setTexts] = useState(['chicken', 'chips', 'chorizo']);
-
   return (
-    
-    
+ 
     <TouchableWithoutFeedback
       onPress={() => {
         Keyboard.dismiss();
@@ -83,40 +16,50 @@ export default function AddExpenseScreen() {
     >
       <SafeAreaView style = {styles.container}>
 
-        <View style = {styles.iconArea}>
-          <Image
-           source={require("../assets/camera.png")}
-           style = {styles.image1Style}
-           />
+        <Text style = {styles.title}>Select Item Category</Text>
 
-          <Image
-           source={require("../assets/book.png")}
-           style = {styles.image2Style}
-           />
-
-          <Image
-           source={require("../assets/pen.png")}
-           style = {styles.image1Style}
-           />
+        <View style={styles.optionBox}>
+          <Text 
+            style = {styles.optionText}
+            >Rent</Text>
         </View>
 
-        <ScrollView style = {styles.scrollview}>
-          <Text></Text>
-          {inputBox.map((inputBox, i) => (<Inputbox key ={i}/>))} 
-        </ScrollView>
+        <Button
+          title = "Click me"
+          onPress = {() => navigation.navigate("AddFoodExpense")}></Button>
 
-        <View style = {styles.buttonArea}>
-
-        <Button style = {styles.button} title = 'Save Items'/>
-  
-        <Button title = 'Add another item' onPress={() => setInputBox([...inputBox, "new Item"])}/>
-
+        <View style={styles.optionBox}>
+          <Text 
+            style = {styles.optionText}
+            onPress={() => console.log("hahaha")}>Food</Text>
         </View>
 
- 
+        <View style={styles.optionBox}>
+          <Image
+            source={require("../assets/camera.png")}
+            style = {styles.image1Style}/>
+          <Text 
+            style = {styles.optionText}
+            onPress={() => console.log("hahaha")}>Power</Text>
+        </View>
+
+        <View style={styles.optionBox}>
+          <Text 
+            style = {styles.optionText}
+            onPress={() => console.log("hahaha")}>Transport</Text>
+        </View>
+
+        <View style={styles.optionBox}>
+          <Text 
+            style = {styles.optionText}
+            onPress={() => console.log("hahaha")}>Other</Text>
+    
+        </View>
 
         <StatusBar style="auto" />
+
       </SafeAreaView>
+
     </TouchableWithoutFeedback>
   );
 }
@@ -127,21 +70,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
 
-  iconArea: {
-    height: 100,
-    width: '100%',
+  title: {
+    fontSize: 25, 
+    fontWeight: 'bold'
+  },
+
+  optionBox: {
+    height: '10%',
+    width: '80%',
+    justifyContent: 'flex-start',
+    borderColor: 'green',
+    borderRadius: 15,
+    borderWidth: 3,
+    backgroundColor: '#4BB377',
+    textAlign: 'center',
+    margin: 10,
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    flex: 0.2,
   },
 
-  scrollview: {
-    flex: 0.5, 
-    backgroundColor: 'orange',
-    borderRadius: 10,
+  optionText: {
+    tintColor: '#fff',
+    left: 10,
+    fontSize: 18, 
   },
 
   inputHeader: {
@@ -149,7 +102,6 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 18,
     textAlign: 'center',
-    
   },
 
   input: {
@@ -166,20 +118,6 @@ const styles = StyleSheet.create({
   image1Style: {
     height: 40,
     width: 40,
-    top: 30,
-  },
-
-  image2Style: {
-    top: 3,
-    height: 70,
-    width: 70,
-  },
-
-  buttonArea: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    flex: 0.2,
-    alignItems: 'center'
   },
 
 });

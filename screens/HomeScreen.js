@@ -19,7 +19,7 @@ export default function HomeScreen({ navigation }) {
                 title="Add my first expense" 
                 size="sm" 
                 backgroundColor="#007bff" 
-                onPress={() =>navigation.navigate('AddExpenseScreen')}
+                onPress={() =>navigation.navigate('AddExpenseNavigator')}
             />
         </ScrollView>
     );

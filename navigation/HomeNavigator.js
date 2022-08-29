@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import HomeScreen from '../screens/HomeScreen';
 import AddExpenseScreen from "../screens/AddExpensesScreen";
+import AddExpenseNavigator from "./AddExpenseNavigator";
 
 const Stack = createStackNavigator();
 
@@ -15,9 +16,9 @@ function HomeNavigator (){
           component={HomeScreen}
         />
         <Stack.Screen
-          name="AddExpenseScreen"
+          name="AddExpenseNavigator"
           options={{ headerShown: false }}
-          component={AddExpenseScreen}
+          component={AddExpenseNavigator}
         />
       </Stack.Navigator>
     );

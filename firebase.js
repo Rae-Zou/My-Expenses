@@ -12,49 +12,12 @@ const firebaseConfig = {
   storageBucket: "fir-auth-a354d.appspot.com",
   messagingSenderId: "975118938736",
   appId: "1:975118938736:web:b5569887732cfc42f9bab5",
-  measurementId: "G-V82ECXJ0D8"
+  measurementId: "G-V82ECXJ0D8",
+  databaseURL: "https://fir-auth-a354d-default-rtdb.firebaseio.com",
 };
 
-class Firebase {
-  constructor() {
-    firebase.initializeApp(firebaseConfig);
-    this.auth = firebase.auth();
-    this.db = firebase.firestore();
-  }
 
-  async signIn(email, password) {
-    try {
-      await this.auth.signInWithEmailAndPassword(email, password);
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
-  async register(email, password) {
-    try {
-      await this.auth.createUserWithEmailAndPassword(email, password);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async signOut() {
-    try {
-      await this.auth.signOut();
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async getUserStatus() {
-    const user = await this.auth.currentUser;
-    if (user) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-}
 // Initialize Firebase
 let app;
 if (firebase.apps.length === 0) {
@@ -64,5 +27,6 @@ if (firebase.apps.length === 0) {
 }
 
 const auth = firebase.auth()
+const db = firebase.database()
 
-export { auth};
+export { auth, db};
