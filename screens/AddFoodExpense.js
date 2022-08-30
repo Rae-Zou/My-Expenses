@@ -6,8 +6,7 @@ import { StyleSheet, Text, View,
          TouchableOpacity,Keyboard, Image} from 'react-native';
 
 import SelectList from 'react-native-dropdown-select-list'
-
-import {db, getAllData, addNewData} from '../firebase'
+import {getAllData, addNewData} from "../database/Database"
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 export default function AddFoodExpense({ navigation }) {
