@@ -1,14 +1,14 @@
 import {db} from '../firebase'
 
-export const getAllData = () =>{
-
+export const getAllData = (list) =>{
+    
     let array = [];
   
     db.ref('users/').on('value', function (snapshot) {
   
       snapshot.forEach(function (childSnapshot) {
         let children = childSnapshot.val();
-        array.push({
+        list.push({
           id: children.key,
           name: children.Name,
           category: children.category,
@@ -18,12 +18,12 @@ export const getAllData = () =>{
         });
       });
       
-      console.log(array)
-      return array;
+      console.log(list)
+
     });
   }
 
-  export const getData = (category) =>{
+  export const getData = (category,list) =>{
 
     let array = [];
   
@@ -32,7 +32,7 @@ export const getAllData = () =>{
       snapshot.forEach(function (childSnapshot) {
         let children = childSnapshot.val();
         if(children.category == category){
-          array.push({
+          list.push({
             id: children.key,
             name: children.Name,
             categroy: children.category,
@@ -43,8 +43,6 @@ export const getAllData = () =>{
         }    
       });
       
-      console.log(array);
-      return array;
     });
   }
   

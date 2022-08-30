@@ -5,7 +5,8 @@ import ListItem  from "../components/ListItem";
 import {getAllData} from "../database/Database";
 
 export default function ForecastScreen({ navigation }) {
-    const userdata = getAllData();
+    const userdata = [];
+    getAllData(userdata);
     console.log(userdata);
     var costDict = {"Other" : 0, "Transport" : 0, "Food" : 0, "Rent" : 0, "Power" : 0};
     var total_cost = 0;
