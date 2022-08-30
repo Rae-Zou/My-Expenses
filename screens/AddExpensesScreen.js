@@ -19,6 +19,11 @@ export default function AddExpenseScreen({ navigation }) {
         <Text style = {styles.title}>Select Item Category</Text>
 
         <View style={styles.optionBox}>
+
+          <Image
+            source={require("../assets/camera.png")}
+            style = {styles.image1Style}/>
+
           <Text 
             style = {styles.optionText}
             >Rent</Text>
@@ -29,32 +34,55 @@ export default function AddExpenseScreen({ navigation }) {
           onPress = {() => navigation.navigate("AddFoodExpense")}></Button>
 
         <View style={styles.optionBox}>
+
+          <Image
+            source={require("../assets/camera.png")}
+            style = {styles.image1Style}/>
+
           <Text 
             style = {styles.optionText}
             onPress={() => console.log("hahaha")}>Food</Text>
         </View>
 
         <View style={styles.optionBox}>
+
           <Image
             source={require("../assets/camera.png")}
             style = {styles.image1Style}/>
+
           <Text 
             style = {styles.optionText}
-            onPress={() => console.log("hahaha")}>Power</Text>
+            onPress={() => console.log("hahaha")}>Power
+          </Text>
+
         </View>
 
         <View style={styles.optionBox}>
+
+          <Image
+            source={require("../assets/camera.png")}
+            style = {styles.image1Style}/>
+
           <Text 
             style = {styles.optionText}
-            onPress={() => console.log("hahaha")}>Transport</Text>
+            onPress={() => console.log("hahaha")}>Transport
+          </Text>
+
         </View>
 
         <View style={styles.optionBox}>
+
+          <Image
+            source={require("../assets/camera.png")}
+            style = {styles.image1Style}/>
+
           <Text 
             style = {styles.optionText}
-            onPress={() => console.log("hahaha")}>Other</Text>
+            onPress={() => console.log("hahaha")}>Other
+          </Text>
     
         </View>
+
 
         <StatusBar style="auto" />
 
@@ -86,14 +114,14 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderWidth: 3,
     backgroundColor: '#4BB377',
-    textAlign: 'center',
+    alignItems: 'center',
     margin: 10,
     flexDirection: 'row',
   },
 
   optionText: {
     tintColor: '#fff',
-    left: 10,
+    left: 20,
     fontSize: 18, 
   },
 
@@ -118,6 +146,7 @@ const styles = StyleSheet.create({
   image1Style: {
     height: 40,
     width: 40,
+    left: 10,
   },
 
 });
