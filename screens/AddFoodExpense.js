@@ -8,6 +8,7 @@ import { StyleSheet, Text, View,
 import SelectList from 'react-native-dropdown-select-list'
 import {getAllData, addNewData} from "../database/Database"
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 export default function AddFoodExpense({ navigation }) {
 
@@ -15,22 +16,24 @@ export default function AddFoodExpense({ navigation }) {
                  "June", "July", "August", "September", "October",
                  "November", "December"];
 
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-
   const current_date = new Date();
   const[date, setDate] = useState((current_date.getDate()) +
                                    " " + months[(current_date.getMonth())] + 
                                    " " + (current_date.getFullYear()
                                    )
                                  );
+  const[itemName, setItemName] = useState(null);
+  const[itemPrice, setItemPrice] = useState(null);
+  const[recurrancy, setRecurrancy] = useState(null);                         
 
-  const[category, setCategory] = useState([
-                {key:'None',value:'None'},
-                {key:'Weekly',value:'Weekly'},
-                {key:'Monthly',value:'Monthly'}]);
+  var radio_props = [
+    {label: 'None', value: 0},
+    {label: 'Weekly', value: 1},
+    {label: 'Monthly', value: 2}
+    ];
 
-  const[selected, setSelected] = useState(null);
 
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
@@ -44,8 +47,20 @@ export default function AddFoodExpense({ navigation }) {
     hideDatePicker();
   };
 
-  const[itemName, setItemName] = useState(null);
-  const[itemPrice, setItemPrice] = useState(null);
+  const checkAdd = (itemName, itemPrice, date, recurrancy) => {
+    if(itemName == null){
+      alert("name is null");
+    }
+    else if(itemPrice == null){
+      alert("Price is null");
+    }
+    else if(recurrancy == null){
+      alert("recurrancy is null");
+    }
+    else{
+      addNewData(itemName,"Food", itemPrice, date, recurrancy)
+    }
+  };
 
   return (
     
@@ -84,20 +99,17 @@ export default function AddFoodExpense({ navigation }) {
 
           <Text style = {styles.title}>Periodicity</Text>
 
-          <SelectList 
-            boxStyles = {styles.inputText}
-            data = {category} 
-            setSelected={setSelected}
-            placeholder = "Select type of recurrancy:"
-            dropdownStyles = {styles.dropdownbox}
-            maxHeight={130}
-            onSelect = {() => console.log(selected)}
-          >
-          </SelectList>
+          <RadioForm
+            radio_props={radio_props}
+            initial={-1}
+            buttonColor={'#4BB377'}
+            selectedButtonColor = {'#4BB377'}
+            onPress={(value) => {setRecurrancy(value)}}
+          />
 
         </View>
         
-        <View style = {styles.container}>
+        <View style = {styles.container2}>
         
           <Text style = {styles.title}>Date of purchased</Text>
 
@@ -119,24 +131,20 @@ export default function AddFoodExpense({ navigation }) {
               onCancel={hideDatePicker}
             />
             
-
-          </View>
-
-          <View>
-            <TouchableOpacity 
-              onPress={() => addNewData(itemName, itemPrice)}
-              stype = {styles.button}>
-
-
-
-            </TouchableOpacity>
           </View>
 
           <TouchableOpacity
-            onPress={() => addNewData(itemName,"Food", itemPrice, date, selected)}
+            onPress={() => checkAdd(itemName, itemPrice, date, recurrancy)}
             style = {styles.button}
           >
-          <Text style = {styles.buttonText}> Add expense</Text>
+            <Text style = {styles.buttonText}>Add expense</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => getAllData()}
+            style = {styles.button}
+          >
+            <Text style = {styles.buttonText}>Get all</Text>
           </TouchableOpacity>
 
         </View>
@@ -154,6 +162,13 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     //justifyContent: 'center',
     margin: 6,
+  },
+
+  container2: {
+    alignItems: 'flex-start',
+    //justifyContent: 'center',
+    margin: 6,
+    top: 10,
   },
 
   title: {
