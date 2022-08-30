@@ -12,7 +12,7 @@ export const getAllData = () =>{
           id: children.key,
           name: children.Name,
           categroy: children.category,
-          price: children.price,
+          amount: children.price,
           date: children.date,
           recurring: children.recurring
         });

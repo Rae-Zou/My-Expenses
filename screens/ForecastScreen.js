@@ -2,8 +2,11 @@ import * as React from 'react';
 import {LineChart} from "react-native-chart-kit";
 import { ScrollView, View, Text, StyleSheet, Dimensions } from 'react-native';
 import ListItem  from "../components/ListItem";
+import {getAllData} from "../database/Database";
 
 export default function ForecastScreen({ navigation }) {
+    const userdata = getAllData();
+    console.log(userdata);
     var costDict = {"Other" : 0, "Transport" : 0, "Food" : 0, "Rent" : 0, "Power" : 0};
     var total_cost = 0;
     const rowItems = [
