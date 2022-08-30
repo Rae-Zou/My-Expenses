@@ -10,13 +10,14 @@ function AddExpenseNavigator (){
     return (
       <Stack.Navigator>
         <Stack.Screen
-          name="AddExpenses"
+          name="Add"
           options={{ headerShown: false }}
           component={AddExpensesScreen}
         />
 
         <Stack.Screen
-          name="AddFoodExpense"          
+          name="Food Expense" 
+                   
           component={AddFoodExpense}
         />
 

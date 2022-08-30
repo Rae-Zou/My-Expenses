@@ -31,7 +31,7 @@ export default function AddExpenseScreen({ navigation }) {
 
         <Button
           title = "Click me"
-          onPress = {() => navigation.navigate("AddFoodExpense")}></Button>
+          onPress = {() => navigation.navigate("Food Expense")}></Button>
 
         <View style={styles.optionBox}>
 

@@ -11,12 +11,18 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 export default function AddFoodExpense({ navigation }) {
 
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const[date, setDate] = useState("1st January 2022");
-
   var  months = ["January", "February", "March", "April", "May",
                  "June", "July", "August", "September", "October",
                  "November", "December"];
+
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const current_date = new Date();
+  const[date, setDate] = useState((current_date.getDate()) +
+                                   " " + months[(current_date.getMonth())] + 
+                                   " " + (current_date.getFullYear()
+                                   )
+                                 );
 
   const[category, setCategory] = useState([
                 {key:'None',value:'None'},
@@ -41,24 +47,6 @@ export default function AddFoodExpense({ navigation }) {
   const[itemName, setItemName] = useState(null);
   const[itemPrice, setItemPrice] = useState(null);
 
-  // function addNewData(name, price, date, recurring) {
-  //   db.ref('users/').push().set({
-  //     Name: name,
-  //     price: price,
-  //     date: date,
-  //     recurring: recurring
-  //   }, function (error) {
-  //     if (error) {
-  //       // The write failed...
-  //       alert('Error!')
-  //     } else {
-  //       // Data saved successfully!
-  //       alert('Item added successfully to database!')
-  //     }
-  //   });
-
-  // }
-
   return (
     
     <TouchableWithoutFeedback
@@ -69,7 +57,7 @@ export default function AddFoodExpense({ navigation }) {
       <View>
         
         <View style = {styles.container}>
-          <Text style = {styles.title}>Category: Food</Text>
+          <Text style = {styles.title}>Name the expense:</Text>
           
           <TextInput 
             style = {styles.inputText}
@@ -81,7 +69,7 @@ export default function AddFoodExpense({ navigation }) {
         </View>
         
         <View style = {styles.container}>
-          <Text style = {styles.title}>Price of expense:</Text>
+          <Text style = {styles.title}>Amount:</Text>
           
           <TextInput 
             style = {styles.inputText}
@@ -144,13 +132,12 @@ export default function AddFoodExpense({ navigation }) {
             </TouchableOpacity>
           </View>
 
-          <Button
-            title='Add'
-            onPress={() => addNewData(itemName,"Food", itemPrice, date, selected)}></Button>
-
-          <Button
-            title='View Data'
-            onPress={() => getAllData()}></Button>
+          <TouchableOpacity
+            onPress={() => addNewData(itemName,"Food", itemPrice, date, selected)}
+            style = {styles.button}
+          >
+          <Text style = {styles.buttonText}> Add expense</Text>
+          </TouchableOpacity>
 
         </View>
 
@@ -179,7 +166,7 @@ const styles = StyleSheet.create({
 
   inputText: {
     height: 45,
-    width: 400,
+    width: '100%',
     margin: 10,
     borderWidth: 1,
     borderRadius: 10,
@@ -213,6 +200,21 @@ const styles = StyleSheet.create({
     borderColor: 'green',
     top: -5,
     width: 400,
+  },
+
+  button: {
+    top: 50,
+    backgroundColor: '#4BB377',
+    width: '100%',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+
+  buttonText: {
+    color: 'white',
+    fontWeight: '700',
+    fontSize: 16,
   },
 
 });
