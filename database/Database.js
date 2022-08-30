@@ -23,6 +23,32 @@ export const getAllData = () =>{
   
     return array;
   }
+
+  export const getData = (category) =>{
+
+    let array = [];
+  
+    db.ref('users/').on('value', function (snapshot) {
+  
+      snapshot.forEach(function (childSnapshot) {
+        let children = childSnapshot.val();
+        if(children.category == category){
+          array.push({
+            id: children.key,
+            name: children.Name,
+            categroy: children.category,
+            price: children.price,
+            date: children.date,
+            recurring: children.recurring
+          });
+        }    
+      });
+      
+      console.log(array)
+    });
+  
+    return array;
+  }
   
   export function addNewData(name, category, price, date, recurring) {
     db.ref('users/').push().set({

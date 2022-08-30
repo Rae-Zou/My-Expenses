@@ -5,10 +5,9 @@ import { StyleSheet, Text, View,
          Alert, ScrollView, TouchableWithoutFeedback,
          TouchableOpacity,Keyboard, Image} from 'react-native';
 
-import SelectList from 'react-native-dropdown-select-list'
-import {getAllData, addNewData} from "../database/Database"
+import {getAllData, addNewData, getData} from "../database/Database"
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import RadioForm from 'react-native-simple-radio-button';
 
 export default function AddFoodExpense({ navigation }) {
 
@@ -99,14 +98,14 @@ export default function AddFoodExpense({ navigation }) {
 
           <Text style = {styles.title}>Periodicity</Text>
 
-          <RadioForm
+          <RadioForm style = {styles.comptext}
             radio_props={radio_props}
             formHorizontal={true}
             initial={-1}
             buttonColor={'#4BB377'}
             selectedButtonColor = {'#4BB377'}
             onPress={(value) => {setRecurrancy(value)}}
-            buttonSize = {10}
+            buttonSize = {3}
           />
 
         </View>
@@ -198,6 +197,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     margin: 5,
     bottom: 5,
+    top: 5,
   },
 
   image1Style: {
@@ -215,9 +215,10 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    color: 'white',
-    fontWeight: '700',
-    fontSize: 16,
+    fontSize: 18,
+    color: "#fff",
+    fontWeight: "bold",
+    alignSelf: "center",
   },
 
 });

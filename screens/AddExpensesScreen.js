@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, 
          Button, TextInput, SafeAreaView,
          Alert, ScrollView, TouchableWithoutFeedback,
+         TouchableOpacity,
          Keyboard, Image } from 'react-native';
 
 export default function AddExpenseScreen({ navigation }) {
@@ -19,67 +20,44 @@ export default function AddExpenseScreen({ navigation }) {
         <Text style = {styles.title}>Select Item Category</Text>
 
         <View style={styles.optionBox}>
-
-          <Image
-            source={require("../assets/camera.png")}
-            style = {styles.image1Style}/>
-
-          <Text 
-            style = {styles.optionText}
-            >Rent</Text>
+          <View style = {styles.subObtionBox}>
+            <Text style = {styles.arrowText}>🏠</Text>
+            <Text style = {styles.optionText}>Rent</Text>
+          </View> 
+          <Text style = {styles.arrowText}>❯</Text>
         </View>
 
-        <Button
-          title = "Click me"
-          onPress = {() => navigation.navigate("Food Expense")}></Button>
+        <TouchableOpacity style={styles.optionBox} onPress = {() => navigation.navigate("Food Expense")}>
+          <View style = {styles.subObtionBox}>
+            <Text style = {styles.arrowText}>🍴</Text>
+            <Text style = {styles.optionText}>Food</Text>
+          </View>
+          <Text style = {styles.arrowText}>❯</Text>
+        </TouchableOpacity>
 
         <View style={styles.optionBox}>
-
-          <Image
-            source={require("../assets/camera.png")}
-            style = {styles.image1Style}/>
-
-          <Text 
-            style = {styles.optionText}
-            onPress={() => console.log("hahaha")}>Food</Text>
+        <View style = {styles.subObtionBox}>
+            <Text style = {styles.arrowText}>💡</Text>
+            <Text style = {styles.optionText}>Power </Text>
+          </View>
+          <Text style = {styles.arrowText}>❯</Text>
         </View>
 
         <View style={styles.optionBox}>
-
-          <Image
-            source={require("../assets/camera.png")}
-            style = {styles.image1Style}/>
-
-          <Text 
-            style = {styles.optionText}
-            onPress={() => console.log("hahaha")}>Power
-          </Text>
+          <View style = {styles.subObtionBox}>
+            <Text style = {styles.arrowText}>🚌</Text>
+            <Text style = {styles.optionText}>Transport </Text>
+          </View>
+          <Text style = {styles.arrowText}>❯</Text>
 
         </View>
 
         <View style={styles.optionBox}>
-
-          <Image
-            source={require("../assets/camera.png")}
-            style = {styles.image1Style}/>
-
-          <Text 
-            style = {styles.optionText}
-            onPress={() => console.log("hahaha")}>Transport
-          </Text>
-
-        </View>
-
-        <View style={styles.optionBox}>
-
-          <Image
-            source={require("../assets/camera.png")}
-            style = {styles.image1Style}/>
-
-          <Text 
-            style = {styles.optionText}
-            onPress={() => console.log("hahaha")}>Other
-          </Text>
+          <View style = {styles.subObtionBox}>
+            <Text style = {styles.arrowText}>🔧</Text>
+            <Text style = {styles.optionText}>Other </Text>
+          </View>
+          <Text style = {styles.arrowText}>❯</Text>
     
         </View>
 
@@ -109,44 +87,32 @@ const styles = StyleSheet.create({
   optionBox: {
     height: '10%',
     width: '80%',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     borderColor: 'green',
-    borderRadius: 15,
+    borderRadius: 10,
     borderWidth: 3,
-    backgroundColor: '#4BB377',
+    backgroundColor: '#EBF6EF',
     alignItems: 'center',
     margin: 10,
     flexDirection: 'row',
   },
 
+  subObtionBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    margin: 20,
+  },
+
   optionText: {
     tintColor: '#fff',
     left: 20,
-    fontSize: 18, 
+    fontSize: 20,
   },
 
-  inputHeader: {
-    fontWeight: 'bold',
-    color: 'black',
-    fontSize: 18,
-    textAlign: 'center',
-  },
-
-  input: {
-    borderWidth: 1,
-    borderColor: 'black',
-    borderRadius: 10,
-    padding: 8,
-    margin: 5,
-    width: 300,
-    height: 45,  
-    backgroundColor: 'white', 
-  },
-
-  image1Style: {
-    height: 40,
-    width: 40,
-    left: 10,
+  arrowText: {
+    fontSize: 30, 
+    right: 10,
+    color: '#4BB377'
   },
 
 });
