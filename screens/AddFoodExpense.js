@@ -106,6 +106,7 @@ export default function AddFoodExpense({ navigation }) {
             buttonColor={'#4BB377'}
             selectedButtonColor = {'#4BB377'}
             onPress={(value) => {setRecurrancy(value)}}
+            buttonSize = {10}
           />
 
         </View>
@@ -152,6 +153,7 @@ export default function AddFoodExpense({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+
   container: {
     alignItems: 'flex-start',
     //justifyContent: 'center',
@@ -163,28 +165,26 @@ const styles = StyleSheet.create({
     //justifyContent: 'center',
     margin: 6,
     top: 10,
+
   },
 
   title: {
     fontSize: 20, 
     fontWeight: 'bold',   
-    margin: 10,
-    left: -10,
-    top: -10,
+    margin: 5,
+    // left: -10,
+    // top: -10,
   },
 
   inputText: {
-    height: '10%',
+    height: 40,
     width: '100%',
-    margin: 10,
+    margin: 5,
     borderWidth: 1,
     borderRadius: 10,
     borderColor: 'green',
-    left: -10,
-    padding: 13,
-    top: -15,
-    bottom: 10,
-    
+    left: -5,
+    padding: 5,   
   },
 
   viewstyle: {
@@ -203,12 +203,6 @@ const styles = StyleSheet.create({
   image1Style: {
     height: 25,
     width:  25,
-  },
-
-  dropdownbox: {
-    borderColor: 'green',
-    top: -5,
-    width: 400,
   },
 
   button: {
