@@ -18,14 +18,15 @@ export default function AddExpenseScreen({ navigation }) {
       <SafeAreaView style = {styles.container}>
 
         <Text style = {styles.title}>Select Item Category</Text>
+        <Text></Text>
 
-        <View style={styles.optionBox}>
+        <TouchableOpacity style={styles.optionBox} onPress = {() => navigation.navigate("Rent Expense")}>
           <View style = {styles.subObtionBox}>
             <Text style = {styles.arrowText}>🏠</Text>
             <Text style = {styles.optionText}>Rent</Text>
           </View> 
           <Text style = {styles.arrowText}>❯</Text>
-        </View>
+        </TouchableOpacity>
 
         <TouchableOpacity style={styles.optionBox} onPress = {() => navigation.navigate("Food Expense")}>
           <View style = {styles.subObtionBox}>
@@ -35,33 +36,30 @@ export default function AddExpenseScreen({ navigation }) {
           <Text style = {styles.arrowText}>❯</Text>
         </TouchableOpacity>
 
-        <View style={styles.optionBox}>
-        <View style = {styles.subObtionBox}>
+        <TouchableOpacity style={styles.optionBox} onPress = {() => navigation.navigate("Power Expense")}>
+          <View style = {styles.subObtionBox}>
             <Text style = {styles.arrowText}>💡</Text>
             <Text style = {styles.optionText}>Power </Text>
           </View>
           <Text style = {styles.arrowText}>❯</Text>
-        </View>
+        </TouchableOpacity>
 
-        <View style={styles.optionBox}>
+        <TouchableOpacity style={styles.optionBox} onPress = {() => navigation.navigate("Transport Expense")}>
           <View style = {styles.subObtionBox}>
             <Text style = {styles.arrowText}>🚌</Text>
             <Text style = {styles.optionText}>Transport </Text>
           </View>
           <Text style = {styles.arrowText}>❯</Text>
+        </TouchableOpacity>
 
-        </View>
-
-        <View style={styles.optionBox}>
+        <TouchableOpacity style={styles.optionBox} onPress = {() => navigation.navigate("Other Expense")}>
           <View style = {styles.subObtionBox}>
             <Text style = {styles.arrowText}>🔧</Text>
             <Text style = {styles.optionText}>Other </Text>
           </View>
           <Text style = {styles.arrowText}>❯</Text>
-    
-        </View>
-
-
+        </TouchableOpacity>
+        
         <StatusBar style="auto" />
 
       </SafeAreaView>

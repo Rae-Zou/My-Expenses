@@ -11,7 +11,7 @@ export const getAllData = () =>{
         array.push({
           id: children.key,
           name: children.Name,
-          categroy: children.category,
+          category: children.category,
           price: children.price,
           date: children.date,
           recurring: children.recurring
@@ -19,9 +19,8 @@ export const getAllData = () =>{
       });
       
       console.log(array)
+      return array;
     });
-  
-    return array;
   }
 
   export const getData = (category) =>{
@@ -44,10 +43,9 @@ export const getAllData = () =>{
         }    
       });
       
-      console.log(array)
+      console.log(array);
+      return array;
     });
-  
-    return array;
   }
   
   export function addNewData(name, category, price, date, recurring) {
