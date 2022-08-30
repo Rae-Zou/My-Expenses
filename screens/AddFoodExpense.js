@@ -27,9 +27,9 @@ export default function AddFoodExpense({ navigation }) {
   const[recurrancy, setRecurrancy] = useState(null);                         
 
   var radio_props = [
-    {label: 'None', value: 0},
-    {label: 'Weekly', value: 1},
-    {label: 'Monthly', value: 2}
+    {label: 'None   ', value: 0},
+    {label: 'Weekly   ', value: 1},
+    {label: 'Monthly   ', value: 2}
     ];
 
 
@@ -101,6 +101,7 @@ export default function AddFoodExpense({ navigation }) {
 
           <RadioForm
             radio_props={radio_props}
+            formHorizontal={true}
             initial={-1}
             buttonColor={'#4BB377'}
             selectedButtonColor = {'#4BB377'}
@@ -140,13 +141,6 @@ export default function AddFoodExpense({ navigation }) {
             <Text style = {styles.buttonText}>Add expense</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={() => getAllData()}
-            style = {styles.button}
-          >
-            <Text style = {styles.buttonText}>Get all</Text>
-          </TouchableOpacity>
-
         </View>
 
         <StatusBar style="auto" />
@@ -180,7 +174,7 @@ const styles = StyleSheet.create({
   },
 
   inputText: {
-    height: 45,
+    height: '10%',
     width: '100%',
     margin: 10,
     borderWidth: 1,
