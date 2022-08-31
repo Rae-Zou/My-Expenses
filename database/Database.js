@@ -1,6 +1,6 @@
 import {db} from '../firebase'
 
-export const getAllData = (list) =>{
+export const getAllData = () =>{
     
     let array = [];
   
@@ -8,7 +8,7 @@ export const getAllData = (list) =>{
   
       snapshot.forEach(function (childSnapshot) {
         let children = childSnapshot.val();
-        list.push({
+        array.push({
           id: children.key,
           name: children.Name,
           category: children.category,
@@ -18,12 +18,15 @@ export const getAllData = (list) =>{
         });
       });
       
-      console.log(list)
+      //console.log(list)
+      
 
     });
+
+    return array;
   }
 
-  export const getData = (category,list) =>{
+  export const getData = (category) =>{
 
     let array = [];
   
@@ -32,7 +35,7 @@ export const getAllData = (list) =>{
       snapshot.forEach(function (childSnapshot) {
         let children = childSnapshot.val();
         if(children.category == category){
-          list.push({
+          array.push({
             id: children.key,
             name: children.Name,
             categroy: children.category,
@@ -44,7 +47,20 @@ export const getAllData = (list) =>{
       });
       
     });
+
+    return array;
   }
+
+  export const getTotal = (category) =>{
+    var catdata = getData(category);
+    var total = 0;
+    for(const r of catdata) {
+        total += parseInt(r['price']);
+        //console.log(total);
+    }
+    return total;
+  }
+
   
   export function addNewData(name, category, price, date, recurring) {
     db.ref('users/').push().set({

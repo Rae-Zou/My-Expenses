@@ -2,14 +2,24 @@ import * as React from 'react';
 import {LineChart} from "react-native-chart-kit";
 import { ScrollView, View, Text, StyleSheet, Dimensions } from 'react-native';
 import ListItem  from "../components/ListItem";
-import {getAllData} from "../database/Database";
+import {getAllData, getData, getTotal} from "../database/Database";
 
 export default function ForecastScreen({ navigation }) {
-    const userdata = [];
-    getAllData(userdata);
-    console.log(userdata);
-    var costDict = {"Other" : 0, "Transport" : 0, "Food" : 0, "Rent" : 0, "Power" : 0};
-    var total_cost = 0;
+
+    console.log(getTotal("Food"));
+    
+    var rent_total= getTotal("Rent");
+    var food_total = getTotal("Food");
+    var pow_total =  getTotal("Power");
+    var trans_total = getTotal("Transport");
+    var other_total = getTotal("Other");
+
+    var costDict = {"Rent" : rent_total, 
+                    "Food" : food_total,
+                    "Power" : pow_total,
+                    "Transport" : trans_total,
+                    "Other" : other_total};
+    var total_cost = rent_total+pow_total+trans_total+other_total;
     const rowItems = [
         {
           title: ("🏠 Rent  $" + costDict["Rent"] ),
@@ -49,7 +59,7 @@ export default function ForecastScreen({ navigation }) {
       labels: ["Rent", "Food", "Power", "Transport", "Other"],
       datasets: [
         {
-          data: [10,20,30,40],
+          data: [rent_total,pow_total,pow_total,trans_total,other_total],
           color: (opacity = 1) => `rgba(119, 180, 199, ${opacity})`, // optional
           strokeWidth: 2 // optional
         }
