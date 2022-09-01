@@ -18,9 +18,34 @@ export const getAllData = () =>{
         });
       });
       
-      //console.log(list)
+      console.log(array)
       
 
+    });
+
+    return array;
+  }
+
+  export const getDataOnDate = (date) =>{
+
+    let array = [];
+
+    db.ref('users/').on('value', function (snapshot) {
+  
+      snapshot.forEach(function (childSnapshot) {
+        let children = childSnapshot.val();
+        if(children.date == date){
+          array.push({
+            id: children.key,
+            name: children.Name,
+            categroy: children.category,
+            price: children.price,
+            date: children.date,
+            recurring: children.recurring
+          });
+        }    
+      });
+      
     });
 
     return array;
@@ -47,7 +72,7 @@ export const getAllData = () =>{
       });
       
     });
-
+    //console.log(array);
     return array;
   }
 
@@ -61,7 +86,6 @@ export const getAllData = () =>{
     return total;
   }
 
-  
   export function addNewData(name, category, price, date, recurring) {
     db.ref('users/').push().set({
       Name: name,

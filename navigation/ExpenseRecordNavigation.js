@@ -1,28 +1,24 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-
-import ExpensesScreen from '../screens/ExpensesScreen';
 import ExpenseRecord from '../screens/ExpenseRecord';
+import ExpenseRecordMoreDetails from "../screens/ExpenseRecordMoreDetails";
 
 const Stack = createStackNavigator();
 
-function ExpensesNavigator (){
+function ExpensesRecordNavigator (){
     return (
       <Stack.Navigator>
         <Stack.Screen
-          name="ExpensesScreen"
-          options={{ headerShown: false }}
-          component={ExpensesScreen}
-        />
-
-      <Stack.Screen
           name="Expense Record"
           component={ExpenseRecord}
-      />
-      </Stack.Navigator>
+        />
 
-      
+        <Stack.Screen
+            name="More Detail"
+            component={ExpenseRecordMoreDetails}
+        />
+      </Stack.Navigator>
     );
 };
 
-export default ExpensesNavigator;
+export default ExpensesRecordNavigator;
