@@ -8,7 +8,12 @@ export default function DataStoragePrivacyScreen({ navigation }) {
                 style={styles.paragraph}>
                     Based on Mobile AppSec Verification Standard: 
                     Data Storage and Privacy Requirements, 
-                    we will not save your data on any server and therefore that no one but you can access it. 
+                    we will not save your sensitive data on any server. 
+                </Text>
+            <Text
+                style={styles.paragraph}>
+                    No sensitive data is written to application logs. 
+                    No sensitive data is shared with third parties unless it is a necessary part of the architecture.
                 </Text>
         </View>
     );

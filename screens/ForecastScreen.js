@@ -5,9 +5,6 @@ import ListItem  from "../components/ListItem";
 import {getAllData, getData, getTotal} from "../database/Database";
 
 export default function ForecastScreen({ navigation }) {
-
-    console.log(getTotal("Food"));
-    
     var rent_total= getTotal("Rent");
     var food_total = getTotal("Food");
     var pow_total =  getTotal("Power");
@@ -20,6 +17,58 @@ export default function ForecastScreen({ navigation }) {
                     "Transport" : trans_total,
                     "Other" : other_total};
     var total_cost = rent_total+pow_total+trans_total+other_total;
+
+    const now = new Date();
+    const totalDays = new Date(now.getFullYear(), now.getMonth()+1, 0).getDate();
+    var monthlyOccurances = {
+      1: [15],
+      2: [10, 20],
+      3: [7, 14, 21]
+    };
+
+    var monthDays = [...Array(totalDays).keys()].map(i => i + 1);
+    var total_cost = 0;
+    var costs = []
+
+    const recurringExpense = []
+    var alldata = getAllData();
+
+    for (const udata of alldata) {
+      if (udata['recurring'] !=0){
+        recurringExpense.push(udata);
+      }
+    }
+
+    console.log(alldata);
+
+
+    for( const day of monthDays ){
+      // console.log(day); // 0,1,2...
+      for (const udata of alldata) {
+        var date = udata['date'].substring(0, udata['date'].indexOf(' '));
+        //console.log(date);
+        if (udata['recurring'] == 0){
+          if (monthlyOccurances[date] == day) {
+            const c = Math.round(udata['price'])
+            total_cost += Math.round(c);
+            //costDict[udata['title']] += c;
+          }
+        }
+        if (udata['recurring'] == 1){
+          const c = Math.round(udata['price'])
+          total_cost += Math.round(c);
+          //costDict[udata['title']] += c;
+        }
+        if (udata['recurring'] == 2){
+          const c = Math.round(udata['price'])
+          total_cost += Math.round(c);
+          //costDict[udata['title']] += c;
+        }
+      }
+      costs.push(total_cost);
+    }
+    console.log('total_cost: '+total_cost);
+
     const rowItems = [
         {
           title: ("🏠 Rent  $" + costDict["Rent"] ),
@@ -44,6 +93,14 @@ export default function ForecastScreen({ navigation }) {
     
     ];
 
+    monthDays = monthDays.filter(function(value, index, Arr) {
+      return index % 6 == 0;
+    });
+    costs = costs.filter(function(value, index, Arr) {
+      return index % 6 == 0;
+    });
+    const monthDaysStr = monthDays.map(String)
+
     const chartConfig = {
       backgroundGradientFrom: "#1E2923",
       backgroundGradientFromOpacity: 0,
@@ -56,7 +113,7 @@ export default function ForecastScreen({ navigation }) {
     };
 
     const data = {
-      labels: ["Rent", "Food", "Power", "Transport", "Other"],
+      labels: monthDaysStr,
       datasets: [
         {
           data: [rent_total,pow_total,pow_total,trans_total,other_total],
@@ -67,6 +124,7 @@ export default function ForecastScreen({ navigation }) {
       //legend: ["Peak Expenses"] // optional
     };
       
+    
     return (
         <ScrollView style={styles.container}>
             <LineChart

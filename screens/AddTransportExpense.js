@@ -1,4 +1,4 @@
-import {AddExpenseTemplate} from './AddExpenseTemplate';
+import {AddExpenseTemplate} from '../components/AddExpenseTemplate';
 
 export default function AddTransportExpense({ navigation }) {
   return(

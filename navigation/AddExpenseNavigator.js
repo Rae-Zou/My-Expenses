@@ -14,7 +14,7 @@ function AddExpenseNavigator (){
     return (
       <Stack.Navigator>
         <Stack.Screen
-          name="Add"
+          name="AddStack"
           options={{ headerShown: false }}
           component={AddExpensesScreen}
         />
