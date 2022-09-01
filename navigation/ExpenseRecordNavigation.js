@@ -10,11 +10,13 @@ function ExpensesRecordNavigator (){
       <Stack.Navigator>
         <Stack.Screen
           name="Expense Record"
+          options={{ headerShown: false }}
           component={ExpenseRecord}
         />
 
         <Stack.Screen
             name="More Detail"
+            options={{ headerShown: false }}
             component={ExpenseRecordMoreDetails}
         />
       </Stack.Navigator>

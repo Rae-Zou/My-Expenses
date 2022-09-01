@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import ExpensesScreen from '../screens/ExpensesScreen';
 import ExpenseRecord from '../screens/ExpenseRecord';
+import ExpensesRecordNavigator from "./ExpenseRecordNavigation";
 
 const Stack = createStackNavigator();
 
@@ -17,8 +18,9 @@ function ExpensesNavigator (){
 
       <Stack.Screen
           name="Expense Record"
-          component={ExpenseRecord}
+          component={ExpensesRecordNavigator}
       />
+
       </Stack.Navigator>
 
       

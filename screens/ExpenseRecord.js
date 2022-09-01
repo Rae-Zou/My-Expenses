@@ -54,7 +54,10 @@ export default function ExpenseRecord({ navigation }) {
                                 🗓 {item}
                             </Text> 
 
-                            <Text style = {styles.dateBoxText}>
+                            <Text 
+                                style = {styles.dateBoxText}
+                                onPress = {() => navigation.navigate("More Detail", {date: "1 August 2022"})}
+                                >
                                 ❯
                             </Text>  
                         </View>               
