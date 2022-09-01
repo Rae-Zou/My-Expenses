@@ -11,12 +11,12 @@ var trans_total = getTotal("Transport");
 var other_total = getTotal("Other");
 
 var costDict = {"Rent" : rent_total, 
-"Food" : food_total,
-"Power" : pow_total,
-"Transport" : trans_total,
-"Other" : other_total};
+                "Food" : food_total,
+                "Power" : pow_total,
+                "Transport" : trans_total,
+                "Other" : other_total};
 var total_cost = rent_total+pow_total+trans_total+other_total;
-
+//////////////////////////////////////////////////////////////////////////////
 const now = new Date();
 const totalDays = new Date(now.getFullYear(), now.getMonth()+1, 0).getDate();
 var monthlyOccurances = {
@@ -67,7 +67,7 @@ total_cost += Math.round(c);
 costs.push(total_cost);
 }
 console.log('total_cost: '+total_cost);
-
+///////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -80,27 +80,28 @@ return index % 6 == 0;
 const monthDaysStr = monthDays.map(String)
 
 const chartConfig = {
-backgroundGradientFrom: "#1E2923",
-backgroundGradientFromOpacity: 0,
-backgroundGradientTo: "#77B4C7",
-backgroundGradientToOpacity: 0.5,
-color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-strokeWidth: 2, // optional, default 3
-barPercentage: 0.5,
-useShadowColorFromDataset: false, // optional
+  backgroundGradientFrom: "#1E2923",
+  backgroundGradientFromOpacity: 0,
+  backgroundGradientTo: "#77B4C7",
+  backgroundGradientToOpacity: 0.5,
+  color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+  strokeWidth: 2, // optional, default 3
+  barPercentage: 0.5,
+  useShadowColorFromDataset: false, // optional
 };
 
 const data = {
-labels: monthDaysStr,
-datasets: [
-{
-data: [rent_total,pow_total,pow_total,trans_total,other_total],
-color: (opacity = 1) => `rgba(119, 180, 199, ${opacity})`, // optional
-strokeWidth: 2 // optional
-}
+  labels: monthDaysStr,
+  datasets: [
+  {
+    data: [rent_total, pow_total, pow_total, trans_total, other_total],
+    color: (opacity = 1) => `rgba(119, 180, 199, ${opacity})`, // optional
+    strokeWidth: 2 // optional
+  }
 ],
 //legend: ["Peak Expenses"] // optional
 };
+
 
 export default function ForecastScreen({ navigation }) {
   const rowItems = [

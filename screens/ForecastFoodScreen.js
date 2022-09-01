@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+
 export default function ForecastFoodScreen({ navigation }) {
+  
     return (
+        
         <View style={styles.container}>
             <Text
                 style={styles.paragraph}>
-                    No sensitive data is written to application logs.
+                    No sensitive data is written to application logs. 
                     No sensitive data is shared with third parties unless it is a necessary part of the architecture. 
                     
                 </Text>
