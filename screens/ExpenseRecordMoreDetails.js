@@ -50,30 +50,29 @@ export default function ExpenseRecordMoreDetails({route, navigation }) {
         return total;
     }
 
-    // const getFlatList = (list_data) =>{
-    //     return (
-    //         <View style = {styles.HeaderItemText}>
-    //             <Text style = {styles.HeaderText2}>Expenses on rent category:</Text>
+    const getFlatList = (category, list_data, total_value) =>{
+        return (
+            <View style = {styles.HeaderItemText}>
+                <Text style = {styles.HeaderText2}>Expenses on {category} category:</Text>
 
-    //             <FlatList
-    //               data = {rent_expense}
-    //               renderItem = {({item}) => (
-    //                 <View style = {styles.ItemArea}>
-    //                   <Text style = {styles.Text}>{item['categroy']}: {item['name']}</Text>  
-    //                   <Text style = {styles.Text}>$ {item['price']}</Text>  
-    //                 </View>               
-    //               )}
-    //             />
+                <FlatList
+                  data = {list_data}
+                  renderItem = {({item}) => (
+                    <View style = {styles.ItemArea}>
+                      <Text style = {styles.Text}>{item['categroy']}: {item['name']}</Text>  
+                      <Text style = {styles.Text}>$ {item['price']}</Text>  
+                    </View>               
+                  )}
+                />
                 
-    //             <View style = {styles.ItemArea}>
-    //                 <Text style = {styles.Text}> Total spent on rent expenses:</Text>
-    //                 <Text style = {styles.Text}> ${rent_total}</Text>
-    //             </View>
+                <View style = {styles.ItemArea}>
+                    <Text style = {styles.Text}> Total spent on rent expenses:</Text>
+                    <Text style = {styles.Text}> $ {total_value}</Text>
+                </View>
 
-    //         </View>
-
-    //     )
-    // }
+            </View>
+        )
+    }
 
     expenses.map((expense) => updateCategory(expense));
 
@@ -89,108 +88,18 @@ export default function ExpenseRecordMoreDetails({route, navigation }) {
         <View>
             <Text style = {styles.HeaderText}>Spending on {date}:</Text>
 
-            <View style = {styles.HeaderItemText}>
-                <Text style = {styles.HeaderText2}>Expenses on rent category:</Text>
+            {getFlatList('rent' , rent_expense, rent_total)}
 
-                <FlatList
-                  data = {rent_expense}
-                  renderItem = {({item}) => (
-                    <View style = {styles.ItemArea}>
-                      <Text style = {styles.Text}>{item['categroy']}: {item['name']}</Text>  
-                      <Text style = {styles.Text}>$ {item['price']}</Text>  
-                    </View>               
-                  )}
-                />
-                
-                <View style = {styles.ItemArea}>
-                    <Text style = {styles.Text}> Total spent on rent expenses:</Text>
-                    <Text style = {styles.Text}> ${rent_total}</Text>
-                </View>
+            {getFlatList('food', food_expense, food_total)}
 
-            </View>
+            {getFlatList('power', power_expense, power_total)}
 
-            <View style = {styles.HeaderItemText}>
-                <Text style = {styles.HeaderText2}>Expenses on food category:</Text>
+            {getFlatList('transport', transport_expense, transport_total)}
 
-                <FlatList
-                  data = {food_expense}
-                  renderItem = {({item}) => (
-                    <View style = {styles.ItemArea}>
-                      <Text style = {styles.Text}>{item['categroy']}: {item['name']}</Text>  
-                      <Text style = {styles.Text}>$ {item['price']}</Text>  
-                    </View>               
-                  )}
-                />
-
-                <View style = {styles.ItemArea}>
-                    <Text style = {styles.Text}> Total spent on rent expenses:</Text>
-                    <Text style = {styles.Text}> $ {food_total}</Text>
-                </View>
-
-
-            </View>
-
-            <View style = {styles.HeaderItemText}>
-                <Text style = {styles.HeaderText2}>Expenses on power category:</Text>
-
-                <FlatList
-                  data = {power_expense}
-                  renderItem = {({item}) => (
-                    <View style = {styles.ItemArea}>
-                      <Text style = {styles.Text}>{item['categroy']}: {item['name']}</Text>  
-                      <Text style = {styles.Text}>$ {item['price']}</Text>  
-                    </View>               
-                  )}
-                />
-
-                <View style = {styles.ItemArea}>
-                    <Text style = {styles.Text}> Total spent on rent expenses:</Text>
-                    <Text style = {styles.Text}> $ {power_total}</Text>
-                </View>
-            </View>
-
-            <View style = {styles.HeaderItemText}>
-                <Text style = {styles.HeaderText2}>Expenses on transport category:</Text>
-
-                <FlatList
-                  data = {transport_expense}
-                  renderItem = {({item}) => (
-                    <View style = {styles.ItemArea}>
-                      <Text style = {styles.Text}>{item['categroy']}: {item['name']}</Text>  
-                      <Text style = {styles.Text}>$ {item['price']}</Text>  
-                    </View>               
-                  )}
-                />
-
-                <View style = {styles.ItemArea}>
-                    <Text style = {styles.Text}> Total spent on rent expenses:</Text>
-                    <Text style = {styles.Text}> $ {transport_total}</Text>
-                </View>
-
-            </View>
-
-            <View style = {styles.HeaderItemText}>
-                <Text style = {styles.HeaderText2}>Expenses on other category:</Text>
-
-                <FlatList
-                  data = {other_expense}
-                  renderItem = {({item}) => (
-                    <View style = {styles.ItemArea}>
-                      <Text style = {styles.Text}>{item['categroy']}: {item['name']}</Text>  
-                      <Text style = {styles.Text}>$ {item['price']}</Text>  
-                    </View>               
-                  )}
-                />
-
-                <View style = {styles.ItemArea}>
-                    <Text style = {styles.Text}> Total spent on rent expenses:</Text>
-                    <Text style = {styles.Text}> $ {other_total}</Text>
-                </View>
-            </View>
+            {getFlatList('other', other_expense, other_total)}
 
             <View>
                 
-
             </View>
 
             
