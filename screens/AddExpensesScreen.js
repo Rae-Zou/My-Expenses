@@ -17,7 +17,7 @@ export default function AddExpenseScreen({ navigation }) {
     >
       <SafeAreaView style = {styles.container}>
 
-        <Text style = {styles.title}>Select Item Category</Text>
+        <Text style = {styles.title}>Select a Category</Text>
         <Text></Text>
 
         <TouchableOpacity style={styles.optionBox} onPress = {() => navigation.navigate("Rent Expense")}>
@@ -74,20 +74,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    alignContent: "flex-start",
+    backgroundColor: '#fff',
   },
 
   title: {
-    fontSize: 25, 
+    marginTop: 1,
+    fontSize: 22, 
     fontWeight: 'bold'
   },
 
   optionBox: {
-    height: '10%',
-    width: '80%',
+    height: '13%',
+    width: '90%',
     justifyContent: 'space-between',
-    borderColor: 'green',
-    borderRadius: 10,
+    borderColor: '#4BB377',
+    borderRadius: 15,
     borderWidth: 3,
     backgroundColor: '#EBF6EF',
     alignItems: 'center',

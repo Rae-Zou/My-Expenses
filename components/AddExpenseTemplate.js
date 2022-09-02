@@ -67,14 +67,14 @@ export const AddExpenseTemplate = ({category}) => {
         Keyboard.dismiss();
       }}
     >
-      <View>
+      <View style={styles.container1}>
         
         <View style = {styles.container}>
-          <Text style = {styles.title}>Name the {category} expense:</Text>
+          <Text style = {styles.title}>Name the expense:</Text>
           
           <TextInput 
             style = {styles.inputText}
-            placeholder = "Enter item's name: "
+            placeholder = "Enter name: "
             placeholderTextColor= "gray"
             onChangeText={(text) => setItemName(text)}
         
@@ -86,7 +86,7 @@ export const AddExpenseTemplate = ({category}) => {
           
           <TextInput 
             style = {styles.inputText}
-            placeholder = "Enter item's price: "
+            placeholder = "Enter amount: "
             placeholderTextColor= "gray"
             keyboardType='numeric'
             onChangeText={(text) => setItemPrice(text)}
@@ -111,7 +111,7 @@ export const AddExpenseTemplate = ({category}) => {
         
         <View style = {styles.container2}>
         
-          <Text style = {styles.title}>Date of purchased</Text>
+          <Text style = {styles.title}>Date</Text>
 
           <View style = {styles.viewstyle}>
 
@@ -140,12 +140,12 @@ export const AddExpenseTemplate = ({category}) => {
             <Text style = {styles.buttonText}>Add expense</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={() => getAllData()}
             style = {styles.button}
           >
             <Text style = {styles.buttonText}>Get All</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
         </View>
 
@@ -164,6 +164,12 @@ const styles = StyleSheet.create({
     //justifyContent: 'center',
     margin: 6,
   },
+
+  container1: {
+    flex: 1,
+    paddingHorizontal: 16,
+    backgroundColor: "white",
+  }, 
 
   container2: {
     alignItems: 'flex-start',
@@ -187,7 +193,7 @@ const styles = StyleSheet.create({
     margin: 5,
     borderWidth: 1,
     borderRadius: 10,
-    borderColor: 'green',
+    borderColor: '#4BB377',
     left: -5,
     padding: 5,   
   },
