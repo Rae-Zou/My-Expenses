@@ -99,7 +99,7 @@ export const getAllData = () =>{
         alert('Error!')
       } else {
         // Data saved successfully!
-        alert('Item added successfully to database!')
+        alert('Expense added successfully!')
       }
     });
 }

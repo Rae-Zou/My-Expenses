@@ -30,6 +30,7 @@ const styles =  StyleSheet.create({
       marginTop: 5,
       paddingVertical: 10,
       fontSize: 15,
+      lineHeight: 25,
       color: "#595D58",
       justifyContent: "space-between",
     },

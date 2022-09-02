@@ -27,7 +27,7 @@ export const AddExpenseTemplate = ({category}) => {
   var radio_props = [
     {label: 'None   ', value: 0},
     {label: 'Weekly   ', value: 1},
-    {label: 'Monthly   ', value: 2}
+    {label: 'Fortnightly   ', value: 2}
     ];
 
 

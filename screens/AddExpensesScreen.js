@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   optionText: {
     tintColor: '#fff',
     left: 20,
-    fontSize: 20,
+    fontSize: 18,
   },
 
   arrowText: {
