@@ -3,6 +3,7 @@ import {LineChart} from "react-native-chart-kit";
 import { ScrollView, View, Text, StyleSheet, Dimensions } from 'react-native';
 import ListItem  from "../components/ListItem";
 import {getAllData, getData, getTotal} from "../database/Database";
+import {calForecastData, calcosts, calmonthDays} from "../database/ForecastData";
 
 var rent_total= getTotal("Rent");
 var food_total = getTotal("Food");
@@ -10,75 +11,30 @@ var pow_total =  getTotal("Power");
 var trans_total = getTotal("Transport");
 var other_total = getTotal("Other");
 
+// total cost of each category input data
 var costDict = {"Rent" : rent_total, 
                 "Food" : food_total,
                 "Power" : pow_total,
                 "Transport" : trans_total,
                 "Other" : other_total};
-var total_cost = rent_total+pow_total+trans_total+other_total;
-//////////////////////////////////////////////////////////////////////////////
-const now = new Date();
-const totalDays = new Date(now.getFullYear(), now.getMonth()+1, 0).getDate();
-var monthlyOccurances = {
-1: [15],
-2: [10, 20],
-3: [7, 14, 21]
-};
 
-var monthDays = [...Array(totalDays).keys()].map(i => i + 1);
-var total_cost = 0;
-var costs = []
+var total_cost = rent_total+pow_total+trans_total+other_total;  // total cost of all input data
 
-const recurringExpense = []
-var alldata = getAllData();
-
-for (const udata of alldata) {
-if (udata['recurring'] !=0){
-recurringExpense.push(udata);
-}
-}
-
-console.log(alldata);
-
-
-for( const day of monthDays ){
-// console.log(day); // 0,1,2...
-for (const udata of alldata) {
-var date = udata['date'].substring(0, udata['date'].indexOf(' '));
-//console.log(date);
-if (udata['recurring'] == 0){
-if (monthlyOccurances[date] == day) {
-const c = Math.round(udata['price'])
-total_cost += Math.round(c);
-//costDict[udata['title']] += c;
-}
-}
-if (udata['recurring'] == 1){
-const c = Math.round(udata['price'])
-total_cost += Math.round(c);
-//costDict[udata['title']] += c;
-}
-if (udata['recurring'] == 2){
-const c = Math.round(udata['price'])
-total_cost += Math.round(c);
-//costDict[udata['title']] += c;
-}
-}
-costs.push(total_cost);
-}
-console.log('total_cost: '+total_cost);
-///////////////////////////////////////////////////////////////////////////////////
-
-
+var total_forecast_cost = calForecastData()                              // total forecast cost of all input data
+var costs = calcosts()                                                   // predicted cost for each period
+var monthDays = calmonthDays()
+console.log('total_forecast_cost: '+total_forecast_cost);
 
 monthDays = monthDays.filter(function(value, index, Arr) {
-return index % 6 == 0;
+  return index % 6 == 0;
 });
 costs = costs.filter(function(value, index, Arr) {
-return index % 6 == 0;
+  return index % 6 == 0;
 });
 const monthDaysStr = monthDays.map(String)
 
+
+// line char configuration 
 const chartConfig = {
   backgroundGradientFrom: "#1E2923",
   backgroundGradientFromOpacity: 0,
@@ -90,11 +46,12 @@ const chartConfig = {
   useShadowColorFromDataset: false, // optional
 };
 
+// line char data 
 const data = {
   labels: monthDaysStr,
   datasets: [
   {
-    data: [rent_total, pow_total, pow_total, trans_total, other_total],
+    data: costs,  // predicted cost
     color: (opacity = 1) => `rgba(119, 180, 199, ${opacity})`, // optional
     strokeWidth: 2 // optional
   }
@@ -145,7 +102,7 @@ export default function ForecastScreen({ navigation }) {
             />
 
             <Text style={styles.forecastCost}>{("Your forecast cost for next month")}</Text>
-            <Text style={styles.forecastCost}>{("Total: 💲" + total_cost.toFixed(2))}</Text>
+            <Text style={styles.forecastCost}>{("Total: 💲" + total_forecast_cost.toFixed(2))}</Text>
 
             {rowItems.map((item, index) => (
                 <ListItem
