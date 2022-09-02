@@ -15,11 +15,7 @@ export const AddExpenseTemplate = ({category}) => {
                  "November", "December"];
 
   const current_date = new Date();
-  const[date, setDate] = useState((current_date.getDate()) +
-                                   " " + months[(current_date.getMonth())] + 
-                                   " " + (current_date.getFullYear()
-                                   )
-                                 );
+  const[date, setDate] = useState(current_date);                              
   const[itemName, setItemName] = useState(null);
   const[itemPrice, setItemPrice] = useState(null);
   const[recurrancy, setRecurrancy] = useState(null);                         
@@ -41,7 +37,9 @@ export const AddExpenseTemplate = ({category}) => {
   };
 
   const handleConfirm = (date) => {
-    setDate((date.getDate()) + " " + months[(date.getMonth())] + " " + (date.getFullYear()));
+    // console.log(date);
+    // console.log(date.getDate());
+    setDate(date);
     hideDatePicker();
   };
 
@@ -115,7 +113,7 @@ export const AddExpenseTemplate = ({category}) => {
 
           <View style = {styles.viewstyle}>
 
-            <Text style = {styles.comptext}>🗓 {date}</Text>
+            <Text style = {styles.comptext}>🗓 {date.getDate()} {months[date.getMonth()]} {date.getFullYear()}</Text>
 
             <TouchableOpacity onPress={showDatePicker}>
               <Image
