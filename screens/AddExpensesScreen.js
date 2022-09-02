@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   },
 
   optionBox: {
-    height: '13%',
+    height: '12%',
     width: '90%',
     justifyContent: 'space-between',
     borderColor: '#4BB377',
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   subObtionBox: {
     flexDirection: 'row',
     alignItems: 'center',
-    margin: 20,
+    margin: 16,
   },
 
   optionText: {
