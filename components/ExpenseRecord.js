@@ -32,23 +32,13 @@ export default function ExpenseRecord({ navigation }) {
         for(const r of expense_on_date) {
             total += parseInt(r['price']);
         }
-        console.log(total);
+        
         return total;
     };
 
     for(let i = 1; i < 31; i++){
 		const day = i + " " + month + " " + 2022;
         days.push(day);
-	}
-
-    for(let i = 0; i < 30; i++){
-		const expense_on_date = getDataOnDate(days[i]);
-        var total = 0;
-        for(const r of expense_on_date) {
-            total += parseInt(r['price']);
-        }
-        console.log(total);
-        totals.push(total);
 	}
 
     return(
@@ -79,13 +69,18 @@ export default function ExpenseRecord({ navigation }) {
                             </Text> 
 
                             {}
-
-                            <Text 
-                                style = {styles.dateBoxText}
-                                onPress = {() => navigation.navigate("More Detail", {date: item})}
-                                >
-                                ❯
-                            </Text>  
+                            <View style = {{flexDirection:'row', alignItems: 'center'}}>
+                                <View style = {{alignItems: 'center'}}>
+                                    <Text style={{fontSize: 16}}>Total</Text>
+                                    <Text style={{fontSize: 16}}>{calculateTotal(item)}</Text>
+                                </View>
+                                <Text 
+                                    style = {styles.dateBoxText}
+                                    onPress = {() => navigation.navigate("More Detail", {date: item})}
+                                    >
+                                    ❯
+                                </Text>  
+                            </View>
                         </View>               
                     )}
                 />

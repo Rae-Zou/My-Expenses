@@ -76,6 +76,31 @@ export const getAllData = () =>{
     return array;
   }
 
+  export const getDataWithPrefix = (prefix, category) =>{
+
+    let array = [];
+  
+    db.ref('users/').on('value', function (snapshot) {
+  
+      snapshot.forEach(function (childSnapshot) {
+        let children = childSnapshot.val();
+        if(children.Name.startsWith(prefix)){
+          console.log(prefix)
+          console.log(children.category)
+          console.log(children.Name)
+          array.push({
+            name: children.Name,
+          });
+        }    
+      });
+      
+    });
+
+    return array;
+  }
+
+
+
   export const getTotal = (category) =>{
     var catdata = getData(category);
     var total = 0;

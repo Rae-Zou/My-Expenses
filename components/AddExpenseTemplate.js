@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, 
-         Button, TextInput,
+         Button, TextInput, FlatList,
          Alert, ScrollView, TouchableWithoutFeedback,
          TouchableOpacity,Keyboard, Image} from 'react-native';
+import { Dimensions } from "react-native";
 
-import {getAllData, addNewData, getData} from "../database/Database"
+import {getAllData, addNewData, getData, getDataWithPrefix} from "../database/Database"
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import RadioForm from 'react-native-simple-radio-button';
 
@@ -22,7 +23,9 @@ export const AddExpenseTemplate = ({category}) => {
                                  );
   const[itemName, setItemName] = useState(null);
   const[itemPrice, setItemPrice] = useState(null);
-  const[recurrancy, setRecurrancy] = useState(null);                         
+  const[recurrancy, setRecurrancy] = useState(null);  
+  
+  const[suggestion, setSuggestion] = useState([])
 
   var radio_props = [
     {label: 'None   ', value: 0},
@@ -61,6 +64,26 @@ export const AddExpenseTemplate = ({category}) => {
     }
   };
 
+  const changeSuggestion = (prefix) => {
+
+    setItemName(prefix);
+
+    if(prefix == ""){
+      setSuggestion([]);
+    }
+    else{
+      setSuggestion(getDataWithPrefix(prefix, category));
+    }
+
+  };
+
+  const changeSuggestionAfterClicked = (itemName) => {
+
+    setItemName(itemName);
+    setSuggestion([]);
+    
+  };
+
   return (
     
     <TouchableWithoutFeedback
@@ -74,12 +97,22 @@ export const AddExpenseTemplate = ({category}) => {
           <Text style = {styles.title}>Name the expense:</Text>
           
           <TextInput 
+            value = {itemName}
             style = {styles.inputText}
             placeholder = "Enter name: "
             placeholderTextColor= "gray"
-            onChangeText={(text) => setItemName(text)}
-        
+            onChangeText={(text) => changeSuggestion(text)}
           />
+
+          <FlatList                 
+                  data = {suggestion}
+                  renderItem = {({item}) => (
+                    <View style = {styles.suggestion}>
+                      <Text onPress={() => changeSuggestionAfterClicked(item['name'])}>{item['name']}</Text>   
+                    </View>            
+                  )}
+          />
+
         </View>
         
         <View style = {styles.container}>
@@ -162,7 +195,6 @@ const styles = StyleSheet.create({
 
   container: {
     alignItems: 'flex-start',
-    //justifyContent: 'center',
     margin: 6,
   },
 
@@ -174,7 +206,6 @@ const styles = StyleSheet.create({
 
   container2: {
     alignItems: 'flex-start',
-    //justifyContent: 'center',
     margin: 6,
     top: 10,
 
@@ -184,13 +215,11 @@ const styles = StyleSheet.create({
     fontSize: 20, 
     fontWeight: 'bold',   
     margin: 5,
-    // left: -10,
-    // top: -10,
   },
 
   inputText: {
     height: 40,
-    width: '100%',
+    width: Dimensions.get("window").width*0.9,
     margin: 5,
     borderWidth: 1,
     borderRadius: 10,
@@ -232,6 +261,11 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
     alignSelf: "center",
+  },
+
+  suggestion: {
+    left: 0,
+    padding: 5, 
   },
 
 });
