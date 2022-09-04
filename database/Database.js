@@ -84,13 +84,14 @@ export const getAllData = () =>{
   
       snapshot.forEach(function (childSnapshot) {
         let children = childSnapshot.val();
-        if(children.Name.startsWith(prefix)){
-          console.log(prefix)
-          console.log(children.category)
-          console.log(children.Name)
+        // console.log(prefix)
+        // console.log(children.Name)
+        if(children.Name.startsWith(prefix) && children.category == category){
+          
           array.push({
             name: children.Name,
           });
+
         }    
       });
       
