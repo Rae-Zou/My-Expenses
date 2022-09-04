@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, RefreshControl, ScrollView } from 'react-native';
 import {getTotal, getDataOnDate} from "../database/Database";
-import { FlatList } from 'react-native-gesture-handler';
 
 export default function ExpenseRecordMoreDetails({route, navigation }) {
 
@@ -55,15 +54,7 @@ export default function ExpenseRecordMoreDetails({route, navigation }) {
             <View style = {styles.HeaderItemText}>
                 <Text style = {styles.HeaderText2}>Expenses on {category} category:</Text>
 
-                <FlatList
-                  data = {list_data}
-                  renderItem = {({item}) => (
-                    <View style = {styles.ItemArea}>
-                      <Text style = {styles.Text}>{item['categroy']}: {item['name']}</Text>  
-                      <Text style = {styles.Text}>$ {item['price']}</Text>  
-                    </View>               
-                  )}
-                />
+                {getMapList(list_data)}
                 
                 <View style = {styles.ItemArea}>
                     <Text style = {styles.Text}> Total spent on rent expenses:</Text>
@@ -74,6 +65,19 @@ export default function ExpenseRecordMoreDetails({route, navigation }) {
         )
     }
 
+    const getMapList = (list_data) => {
+        
+        return list_data.map((data, i) => {
+          return (
+            <View style = {styles.ItemArea}>
+                <Text key = {i} style = {styles.Text}>{data['categroy']}: {data['name']}</Text>  
+                <Text key = {i+100} style = {styles.Text}>$ {data['price']}</Text>
+            </View>   
+          )
+        })
+    
+    }
+
     expenses.map((expense) => updateCategory(expense));
 
     var rent_total = getTotal(rent_expense);
@@ -82,10 +86,8 @@ export default function ExpenseRecordMoreDetails({route, navigation }) {
     var transport_total = getTotal(transport_expense);
     var other_total = getTotal(other_expense);
 
-
-
     return(
-        <View>
+        <ScrollView>
             <Text style = {styles.HeaderText}>Spending on {date}:</Text>
 
             {getFlatList('rent' , rent_expense, rent_total)}
@@ -103,7 +105,7 @@ export default function ExpenseRecordMoreDetails({route, navigation }) {
             </View>
 
             
-        </View>
+        </ScrollView>
     )
 }
 

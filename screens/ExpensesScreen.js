@@ -34,7 +34,7 @@ export default function ExpensesScreen({ navigation }) {
     useShadowColorFromDataset: false, // optional
   };
 
-  const [selected, setSelected] = React.useState("1 August 2022");
+  const [selected, setSelected] = React.useState("1 August 2022 - Monday");
 
   //let expenses = getDataOnDate('2 August 2022');
   const [expenses, setExpenses] = React.useState([])

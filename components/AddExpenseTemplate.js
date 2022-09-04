@@ -41,6 +41,7 @@ export const AddExpenseTemplate = ({category}) => {
   };
 
   const handleConfirm = (date) => {
+    console.log(date);
     setDate((date.getDate()) + " " + months[(date.getMonth())] + " " + (date.getFullYear()));
     hideDatePicker();
   };

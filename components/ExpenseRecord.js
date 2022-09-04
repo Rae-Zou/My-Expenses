@@ -24,10 +24,31 @@ export default function ExpenseRecord({ navigation }) {
     };
 
     let days = [];
+    let totals = [];
+
+    const calculateTotal = (date) => {
+        const expense_on_date = getDataOnDate(date);
+        var total = 0;
+        for(const r of expense_on_date) {
+            total += parseInt(r['price']);
+        }
+        console.log(total);
+        return total;
+    };
 
     for(let i = 1; i < 31; i++){
 		const day = i + " " + month + " " + 2022;
         days.push(day);
+	}
+
+    for(let i = 0; i < 30; i++){
+		const expense_on_date = getDataOnDate(days[i]);
+        var total = 0;
+        for(const r of expense_on_date) {
+            total += parseInt(r['price']);
+        }
+        console.log(total);
+        totals.push(total);
 	}
 
     return(
@@ -48,15 +69,20 @@ export default function ExpenseRecord({ navigation }) {
             <View style = {styles.scrollView}>
                 <FlatList
                     data = {days}
+                    
                     renderItem = {({item}) => (
+                        
                         <View style = {styles.dateBox}>
+                            
                             <Text style = {styles.dateBoxText}>
                                 🗓 {item}
                             </Text> 
 
+                            {}
+
                             <Text 
                                 style = {styles.dateBoxText}
-                                onPress = {() => navigation.navigate("More Detail", {date: "1 August 2022"})}
+                                onPress = {() => navigation.navigate("More Detail", {date: item})}
                                 >
                                 ❯
                             </Text>  
