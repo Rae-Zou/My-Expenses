@@ -18,21 +18,22 @@ export default function ExpensesScreen({ navigation }) {
     labels: ["Rent", "Food", "Power", "Transport", "Other"],
     datasets: [
       {
-        data: [rent_total, food_total, pow_total, trans_total, other_total]
+        data: [rent_total, food_total, pow_total, trans_total, other_total],
+        color: (opacity = 1) => `rgba(119, 180, 199, ${opacity})`,
       }
     ]
   };
 
   const chartConfig = {
-    backgroundGradientFrom: "#FFB003",
+    backgroundGradientFrom: "#D0EBF4",
     backgroundGradientFromOpacity: 0,
-    backgroundGradientTo: "#FF7300",
+    backgroundGradientTo: "#D0EBF4",
     backgroundGradientToOpacity: 0.5,
-    color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+    color: (opacity = 1) => `rgba(0, 0, 0,${opacity})`,
     strokeWidth: 2, // optional, default 3
     barPercentage: 0.5,
     useShadowColorFromDataset: false, // optional
-    fillShadowGradient: "#FF7300", 
+    fillShadowGradient: "#81B2CA", 
     fillShadowGradientOpacity: 1,
   };
 
@@ -205,7 +206,7 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 18,
-    fontWeight: 'bold',
+ 
     color: '#595D58',
   },
 
