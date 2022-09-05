@@ -1,4 +1,4 @@
-import {AddExpenseTemplate} from '../components/AddExpenseTemplate';
+import {AddExpenseTemplate} from '../components/AddExpenseFrame';
 
 export default function AddPowerExpense({ navigation }) {
   return(
