@@ -24,15 +24,15 @@ export default function ExpensesScreen({ navigation }) {
   };
 
   const chartConfig = {
-    backgroundGradientFrom: "#1E2923",
+    backgroundGradientFrom: "#FFB003",
     backgroundGradientFromOpacity: 0,
-    backgroundGradientTo: "#77B4C7",
+    backgroundGradientTo: "#FF7300",
     backgroundGradientToOpacity: 0.5,
     color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
     strokeWidth: 2, // optional, default 3
     barPercentage: 0.5,
     useShadowColorFromDataset: false, // optional
-    fillShadowGradient: "#77B4C7", 
+    fillShadowGradient: "#FF7300", 
     fillShadowGradientOpacity: 1,
   };
 

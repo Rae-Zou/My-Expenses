@@ -1,22 +1,14 @@
-import * as React from 'react';
-import {getAllData, getData, getTotal} from "../database/Database";
+import {getAllData} from "../database/Database";
 
 var total_cost = 0;
-  
+var costs = [];
 const now = new Date();
-const totalDays = new Date(now.getFullYear(), now.getMonth()+1, 0).getDate();
-var monthlyOccurances = {
-                        1: [15],
-                        2: [10, 20],
-                        3: [7, 14, 21]
-                        };
-
-var monthDays = [...Array(totalDays).keys()].map(i => i + 1);
-
-var costs = []
-
+const totalDays = new Date(now.getFullYear(), Number(now.getMonth())+1, 0).getDate();
+const current_day = new Date(now.getFullYear(), Number(now.getMonth())+1, 0);
 const recurringExpense = []
+var monthDays = [...Array(totalDays).keys()].map(i => i + 1);
 var alldata = getAllData();
+var costDict = {"Rent" : 0, "Food" : 0,"Power" : 0,"Transport" : 0,"Other" : 0};
 
 for (const udata of alldata) {
     if (udata['recurring'] !=0){
@@ -24,35 +16,30 @@ for (const udata of alldata) {
     }
 }
 
-console.log(alldata);
-
-const current_day = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
-console.log("current_day type: " + typeof(current_day) + ", date: "+current_day);
 
 for( const day of monthDays ){
-
-    // console.log(day); // 0,1,2...
+    const plot_Date = new Date(current_day.getFullYear(), current_day.getMonth(), day)
     for (const udata of alldata) {
-        console.log("database date type: " + typeof(udata['date'])+ ", date: "+udata['date']);
-
-        var date = udata['date'].substring(0, udata['date'].indexOf(' '));
-        //console.log(date);
+        const t_date = new Date(udata['date']);
         if (udata['recurring'] == 0){
-            if (monthlyOccurances[date] == day) {
+            if ( t_date == plot_Date) {
                 const c = Math.round(udata['price'])
                 total_cost += Math.round(c);
-                //costDict[udata['title']] += c;
+                costDict[udata['category']] += c;
             }
-            }
-            if (udata['recurring'] == 1){
-                const c = Math.round(udata['price'])
-                total_cost += Math.round(c);
-                //costDict[udata['title']] += c;
-            }
+        } else{
+            var t_recurring = 7;
             if (udata['recurring'] == 2){
+                t_recurring = 14;
+            }
+            const diffTime = Math.abs(plot_Date - t_date);
+            const day_diff = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+            //console.log("day_diff: "+day_diff);
+            if (day_diff >= 0 && (day_diff)%t_recurring == 0){
                 const c = Math.round(udata['price'])
                 total_cost += Math.round(c);
-                //costDict[udata['title']] += c;
+                costDict[udata['category']] += c;
+            }
         }
     }
     costs.push(total_cost);
@@ -64,3 +51,5 @@ export const calForecastData = () =>{ return total_cost; }
 export const calcosts = () =>{ return costs; }
 
 export const calmonthDays = () =>{ return monthDays; }
+
+export const calcostDict = () =>{ return costDict; }

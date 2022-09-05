@@ -2,37 +2,24 @@ import * as React from 'react';
 import {LineChart} from "react-native-chart-kit";
 import { ScrollView, View, Text, StyleSheet, Dimensions } from 'react-native';
 import ListItem  from "../components/ListItem";
-import {getAllData, getData, getTotal} from "../database/Database";
-import {calForecastData, calcosts, calmonthDays} from "../database/ForecastData";
+import {calForecastData, calcosts, calmonthDays, calcostDict} from "../database/ForecastData";
 
-var rent_total= getTotal("Rent");
-var food_total = getTotal("Food");
-var pow_total =  getTotal("Power");
-var trans_total = getTotal("Transport");
-var other_total = getTotal("Other");
 
 // total cost of each category input data
-var costDict = {"Rent" : rent_total, 
-                "Food" : food_total,
-                "Power" : pow_total,
-                "Transport" : trans_total,
-                "Other" : other_total};
-
-var total_cost = rent_total+pow_total+trans_total+other_total;  // total cost of all input data
-
+var costDict = calcostDict();
 var total_forecast_cost = calForecastData()                              // total forecast cost of all input data
 var costs = calcosts()                                                   // predicted cost for each period
 var monthDays = calmonthDays()
-console.log('total_forecast_cost: '+total_forecast_cost);
+
+//console.log('total_forecast_cost: '+total_forecast_cost);
 
 monthDays = monthDays.filter(function(value, index, Arr) {
-  return index % 6 == 0;
+  return index % 3 == 0;
 });
 costs = costs.filter(function(value, index, Arr) {
-  return index % 6 == 0;
+  return index % 3 == 0;
 });
 const monthDaysStr = monthDays.map(String)
-
 
 // line char configuration 
 const chartConfig = {
@@ -89,7 +76,7 @@ export default function ForecastScreen({ navigation }) {
         <ScrollView style={styles.container}>
             <LineChart
               data={data}
-              width={Dimensions.get("window").width}
+              width={Dimensions.get("window").width-20}
               height={256}
               verticalLabelRotation={0}
               chartConfig={chartConfig}
