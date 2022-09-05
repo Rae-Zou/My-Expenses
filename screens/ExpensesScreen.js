@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 18,
+    fontSize: 16,
  
     color: '#595D58',
   },
