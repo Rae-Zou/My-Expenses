@@ -16,7 +16,6 @@ for (const udata of alldata) {
     }
 }
 
-
 for( const day of monthDays ){
     const plot_Date = new Date(current_day.getFullYear(), current_day.getMonth(), day)
     for (const udata of alldata) {
@@ -34,7 +33,6 @@ for( const day of monthDays ){
             }
             const diffTime = Math.abs(plot_Date - t_date);
             const day_diff = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-            //console.log("day_diff: "+day_diff);
             if (day_diff >= 0 && (day_diff)%t_recurring == 0){
                 const c = Math.round(udata['price'])
                 total_cost += Math.round(c);

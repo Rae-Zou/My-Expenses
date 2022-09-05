@@ -1,9 +1,12 @@
 import * as React from 'react';
 import {LineChart} from "react-native-chart-kit";
-import { ScrollView, View, Text, StyleSheet, Dimensions } from 'react-native';
+import {RefreshControl, SafeAreaView, ScrollView, View, Text, StyleSheet, Dimensions } from 'react-native';
 import ListItem  from "../components/ListItem";
 import {calForecastData, calcosts, calmonthDays, calcostDict} from "../database/ForecastData";
 
+const wait = (timeout) => {
+  return new Promise(resolve => setTimeout(resolve, timeout));
+}
 
 // total cost of each category input data
 var costDict = calcostDict();
@@ -48,6 +51,11 @@ const data = {
 
 
 export default function ForecastScreen({ navigation }) {
+  const [refreshing, setRefreshing] = React.useState(false);
+  const onRefresh = React.useCallback(() => {
+                                              setRefreshing(true);
+                                              wait(2000).then(() => setRefreshing(false));
+                                            }, []);
   const rowItems = [
     {
     title: ("🏠 Rent  $" + costDict["Rent"] ),
@@ -73,7 +81,13 @@ export default function ForecastScreen({ navigation }) {
     ];
 
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.container} refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
+        }>
+
             <LineChart
               data={data}
               width={Dimensions.get("window").width-20}
