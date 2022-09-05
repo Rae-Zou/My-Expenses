@@ -1,13 +1,22 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import {calcostDict, calForecastData} from '../database/ForecastData';
 
 export default function ForecastTransScreen({ navigation }) {
+    var costDict = calcostDict();
+    var total = calForecastData();
+    var prob = ((costDict["Transport"]/(total))*100).toFixed(2);
+
     return (
         <View style={styles.container}>
             <Text
                 style={styles.paragraph}>
-                    No sensitive data is written to application logs.
-                    No sensitive data is shared with third parties unless it is a necessary part of the architecture. 
+                    Based on your spending habit: 🤗{'\n'}
+       
+                </Text>
+            <Text
+                style={styles.paragraph2}>
+                    📊  {prob}% of your total spending will be on Transport next month.
                 </Text>
         </View>
     );
@@ -21,10 +30,15 @@ const styles =  StyleSheet.create({
 
     },
     paragraph: {
-      marginTop: 5,
-      paddingVertical: 10,
-      fontSize: 15,
+      marginTop: 8,
+      fontSize: 16,
       color: "#595D58",
       justifyContent: "space-between",
     },
+    paragraph2: {
+        marginTop: 2,
+        fontSize: 16,
+        color: "#595D58",
+        justifyContent: "space-between",
+      },
   });
