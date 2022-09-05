@@ -3,28 +3,33 @@ import { View, Text, StyleSheet, RefreshControl, ScrollView } from 'react-native
 import {getTotal, getDataOnDate} from "../database/Database";
 import { FlatList } from 'react-native-gesture-handler';
 
+const  months = ["January", "February", "March", "April", "May",
+               "June", "July", "August", "September", "October",
+               "November", "December"];
+
+const current_month_ind = new Date().getMonth();
+
+var monthIndex = current_month_ind;
 
 export default function ExpenseRecord({ navigation }) {
 
-    var  months = ["January", "February", "March", "April", "May",
-                 "June", "July", "August", "September", "October",
-                 "November", "December"];
-
-    const [monthIndex, setMonthIndex] = React.useState(0);
     const [month, setMonth] = React.useState(months[monthIndex]);
 
     const NextMonth = () => {
-        setMonthIndex(monthIndex+1);
-        setMonth(months[monthIndex]);
+        if(monthIndex < 11){
+            monthIndex = monthIndex+1;
+            setMonth(months[monthIndex]);
+        }
     };
 
     const PrevMonth = () => {
-        setMonthIndex(monthIndex-1);
-        setMonth(months[monthIndex]);
+        if(monthIndex > 0){
+            monthIndex = monthIndex-1;
+            setMonth(months[monthIndex]);
+        }
     };
 
     let days = [];
-    let totals = [];
 
     const calculateTotal = (date) => {
         const expense_on_date = getDataOnDate(date);
@@ -105,7 +110,7 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderRadius: 15,
         width: '100%',
-        height: '92%',
+        height: '96%',
         
     },
 

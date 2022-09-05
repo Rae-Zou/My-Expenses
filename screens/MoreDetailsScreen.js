@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, Text, StyleSheet, RefreshControl, ScrollView } from 'react-native';
 import {getTotal, getDataOnDate} from "../database/Database";
 
+
 export default function ExpenseRecordMoreDetails({route, navigation }) {
 
     const { date } = route.params;   
@@ -52,12 +53,12 @@ export default function ExpenseRecordMoreDetails({route, navigation }) {
     const getFlatList = (category, list_data, total_value) =>{
         return (
             <View style = {styles.HeaderItemText}>
-                <Text style = {styles.HeaderText2}>Expenses on {category} category:</Text>
+                <Text style = {styles.HeaderText2}>{category.charAt(0).toUpperCase() + category.slice(1)}:</Text>
 
                 {getMapList(list_data)}
                 
                 <View style = {styles.ItemArea}>
-                    <Text style = {styles.Text}> Total spent on rent expenses:</Text>
+                    <Text style = {styles.Text}> Total:</Text>
                     <Text style = {styles.Text}> $ {total_value}</Text>
                 </View>
 
@@ -66,16 +67,26 @@ export default function ExpenseRecordMoreDetails({route, navigation }) {
     }
 
     const getMapList = (list_data) => {
-        
-        return list_data.map((data, i) => {
+        var new_list = [];
+        var ind = 1;
+
+        list_data.map((data) => {
+            data['key'] = ind;
+            ind = ind+1;
+
+            new_list.push({key: ind, value: data})
+        })
+
+        console.log(new_list);
+        return new_list.map((data) => {
           return (
             <View style = {styles.ItemArea}>
-                <Text key = {i} style = {styles.Text}>{data['categroy']}: {data['name']}</Text>  
-                <Text key = {i+100} style = {styles.Text}>$ {data['price']}</Text>
+                <Text key={data.key} style = {styles.Text}>{data.value['categroy']}: {data.value['name']}</Text>  
+                <Text key={data.key+1} style = {styles.Text}>$ {data['price']}</Text>
             </View>   
           )
         })
-    
+
     }
 
     expenses.map((expense) => updateCategory(expense));
@@ -87,10 +98,10 @@ export default function ExpenseRecordMoreDetails({route, navigation }) {
     var other_total = getTotal(other_expense);
 
     return(
-        <View style = {{backgroundColor: 'white'}}>
-            <ScrollView >
+        <View style = {{backgroundColor: 'white', flex: 1}}>
+            <ScrollView style = {{flex:1}}>
                 
-                <Text style = {styles.HeaderText}>Spending on {date}:</Text>
+                <Text style = {styles.HeaderText}>{date}:</Text>
 
                 {getFlatList('rent' , rent_expense, rent_total)}
 
