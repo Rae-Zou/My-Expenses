@@ -2,11 +2,11 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import AddExpensesScreen from '../screens/AddExpensesScreen';
-import AddFoodExpense from '../screens/AddFoodExpense';
-import AddOtherExpense from "../screens/AddOtherExpense";
-import AddPowerExpense from "../screens/AddPowerExpense";
-import AddRentExpense from "../screens/AddRentExpense";
-import AddTransportExpense from "../screens/AddTransportExpense";
+import AddFoodExpense from '../screens/AddFoodScreen';
+import AddOtherExpense from "../screens/AddOtherScreen";
+import AddPowerExpense from "../screens/AddPowerScreen";
+import AddRentExpense from "../screens/AddRentScreen";
+import AddTransportExpense from "../screens/AddTransScreen";
 
 const Stack = createStackNavigator();
 
