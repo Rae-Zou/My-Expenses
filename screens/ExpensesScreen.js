@@ -26,13 +26,13 @@ export default function ExpensesScreen({ navigation }) {
   const chartConfig = {
     backgroundGradientFrom: "#1E2923",
     backgroundGradientFromOpacity: 0,
-    backgroundGradientTo: "green",
-    backgroundGradientToOpacity: 0.3,
+    backgroundGradientTo: "#77B4C7",
+    backgroundGradientToOpacity: 0.5,
     color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
     strokeWidth: 2, // optional, default 3
     barPercentage: 0.5,
     useShadowColorFromDataset: false, // optional
-    fillShadowGradient: 'green', 
+    fillShadowGradient: "#77B4C7", 
     fillShadowGradientOpacity: 1,
   };
 
@@ -91,8 +91,9 @@ export default function ExpensesScreen({ navigation }) {
   }, []);
 
     return (
-      <View>
+      <View style = {{backgroundColor: 'white', flex: 1, flexDirection: 'column'}}>
           <ScrollView
+            style = {{flex: 1}}
             refreshControl={
               <RefreshControl
                 refreshing={refreshing}
@@ -105,14 +106,14 @@ export default function ExpensesScreen({ navigation }) {
               width={Dimensions.get("window").width}
               height={Dimensions.get("window").height/3}
               yAxisLabel="$"
+              style={{
+                borderRadius: 16
+              }}
               chartConfig={chartConfig}
             />
             </ScrollView>
-         
 
-            <Text></Text>
-
-            <View>
+            <View style = {{flex: 1.3}}>
               <View style = {styles.header}>
                 <Text style = {styles.title}>Spending on this week:</Text>
                 <Text 

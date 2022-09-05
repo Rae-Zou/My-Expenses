@@ -48,7 +48,7 @@ export default function ExpenseRecord({ navigation }) {
                 ❮
                 </Text>
 
-                <Text style = {styles.monthText}>{month}</Text>
+                <Text style = {{fontSize: 23, fontWeight: 'bold',}}>{month}</Text>
 
                 <Text style = {styles.monthText} onPress = {() => NextMonth()}>
                 ❯
