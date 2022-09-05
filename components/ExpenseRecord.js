@@ -42,7 +42,7 @@ export default function ExpenseRecord({ navigation }) {
 	}
 
     return(
-        <View>
+        <View style = {{backgroundColor: 'white'}}>
             <View style = {styles.container}>
                 <Text style = {styles.monthText} onPress = {() => PrevMonth()}>
                 ❮
@@ -90,11 +90,9 @@ export default function ExpenseRecord({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    container: {      
+    container: { 
+        top: 15,     
         alignItems: 'center',
-        borderWidth: 3,
-        borderColor: 'green',
-        borderRadius: 10,
         flexDirection: 'row',
         justifyContent: 'space-around', 
     },
@@ -102,7 +100,7 @@ const styles = StyleSheet.create({
     scrollView: {
         top: 20,
         flexDirection: 'row',
-        borderColor: 'green',
+        borderColor: 'white',
         borderWidth: 3,
         borderRadius: 15,
         width: '100%',
@@ -118,9 +116,11 @@ const styles = StyleSheet.create({
     dateBoxText: {
         fontSize: 18,
         margin: 10,
+        //marginHorizontal: 20,
     },
 
     dateBox: {
+        marginHorizontal: 30,
         margin: 10,
         borderWidth: 2,
         borderColor: 'green',
@@ -129,6 +129,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between' 
+        
     },
   
   });

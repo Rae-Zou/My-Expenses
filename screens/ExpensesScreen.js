@@ -32,6 +32,8 @@ export default function ExpensesScreen({ navigation }) {
     strokeWidth: 2, // optional, default 3
     barPercentage: 0.5,
     useShadowColorFromDataset: false, // optional
+    fillShadowGradient: 'green', 
+    fillShadowGradientOpacity: 1,
   };
 
   const [selected, setSelected] = React.useState("1 August 2022 - Monday");
@@ -66,6 +68,7 @@ export default function ExpensesScreen({ navigation }) {
 
     if(object['categroy'] == 'Power'){
       object['categroy'] = '💡';
+      object['category'] = 'Power';
     }
 
     if(object['categroy'] == 'Transport'){
@@ -109,7 +112,7 @@ export default function ExpensesScreen({ navigation }) {
 
             <Text></Text>
 
-            <View style = {styles.container}>
+            <View>
               <View style = {styles.header}>
                 <Text style = {styles.title}>Spending on this week:</Text>
                 <Text 
@@ -122,10 +125,10 @@ export default function ExpensesScreen({ navigation }) {
 
               <SelectList 
                 placeholder = "Select a date"
-                boxStyles = {{marginHorizontal: 10,
+                boxStyles = {{marginHorizontal: 20,
                               borderColor: 'green',
                               borderWidth: 2,}}
-                dropdownStyles = {{marginHorizontal: 10}}
+                dropdownStyles = {{marginHorizontal: 20}}
                 dropdownTextStyles = {{fontSize: 15}}
                 inputStyles = {{fontSize: 15}}
                 setSelected={setSelected} 
@@ -134,20 +137,23 @@ export default function ExpensesScreen({ navigation }) {
                 onSelect={() => getDataOnDay(selected)}> 
               </SelectList>
 
-              <View style = {styles.container2}>
+              <View>
                 <View style = {styles.header}>
-                  <Text style = {styles.title}>Item details: </Text>
-                  <Text style = {styles.title}>Price: </Text>
+                  <Text style = {styles.title}>Expense details: </Text>
+                  <Text style = {styles.title}>Amount: </Text>
                 </View>
 
                 <FlatList
                   data = {expenses}
                   renderItem = {({item}) => (
                     <View style = {styles.itemList}>
-                      <Text style = {styles.itemListText}>
-                        {item['categroy']}: {item['name']}
-                      </Text>  
-
+                      <View style = {{flexDirection: 'row'}}>
+                          <Text style = {styles.itemListText}> {item['categroy']} </Text>
+                          <View>
+                            <Text style = {{fontSize: 16}}>{item['name']}</Text>
+                            <Text style = {{fontSize: 13, color: 'gray'}}>{item['category']}</Text>
+                          </View>
+                      </View>
                       <Text style = {styles.itemListText}>
                         $ {item['price']}
                       </Text>  
@@ -186,9 +192,13 @@ const styles = StyleSheet.create({
   },
 
   header: {
+    marginHorizontal: 20,
     margin: 10,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    
+    // borderBottomColor: 'green',
+    // borderBottomWidth: StyleSheet.hairlineWidth,
     
   },
 
@@ -204,19 +214,16 @@ const styles = StyleSheet.create({
   }, 
 
   itemList: {
-    margin: 7,
-    fontSize: 17,
+    marginHorizontal: 10,
+    marginRight: 20,
+    margin: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderWidth: 1,
-    borderRadius: 10,
-    borderColor: 'green',
+    
   },
 
   itemListText: {
     margin: 7,
     fontSize: 17,
   },
-
-
 });

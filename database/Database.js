@@ -79,18 +79,17 @@ export const getAllData = () =>{
   export const getDataWithPrefix = (prefix, category) =>{
 
     let array = [];
+    let array_holder = [];
   
     db.ref('users/').on('value', function (snapshot) {
   
       snapshot.forEach(function (childSnapshot) {
         let children = childSnapshot.val();
-        // console.log(prefix)
-        // console.log(children.Name)
         if(children.Name.startsWith(prefix) && children.category == category){
-          
-          array.push({
-            name: children.Name,
-          });
+          if(!array_holder.includes(children.Name)){
+            array_holder.push(children.Name);
+            array.push({name: children.Name});
+          }
 
         }    
       });
