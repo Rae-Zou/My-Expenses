@@ -87,25 +87,26 @@ export default function ExpenseRecordMoreDetails({route, navigation }) {
     var other_total = getTotal(other_expense);
 
     return(
-        <ScrollView>
-            <Text style = {styles.HeaderText}>Spending on {date}:</Text>
-
-            {getFlatList('rent' , rent_expense, rent_total)}
-
-            {getFlatList('food', food_expense, food_total)}
-
-            {getFlatList('power', power_expense, power_total)}
-
-            {getFlatList('transport', transport_expense, transport_total)}
-
-            {getFlatList('other', other_expense, other_total)}
-
-            <View>
+        <View style = {{backgroundColor: 'white'}}>
+            <ScrollView >
                 
-            </View>
+                <Text style = {styles.HeaderText}>Spending on {date}:</Text>
+
+                {getFlatList('rent' , rent_expense, rent_total)}
+
+                {getFlatList('food', food_expense, food_total)}
+
+                {getFlatList('power', power_expense, power_total)}
+
+                {getFlatList('transport', transport_expense, transport_total)}
+
+                {getFlatList('other', other_expense, other_total)}
+
 
             
-        </ScrollView>
+            </ScrollView>
+        </View>
+
     )
 }
 
@@ -116,6 +117,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         flexDirection: 'row',
         justifyContent: 'space-around', 
+        backgroundColor: "white",
     },
 
     scrollView: {
