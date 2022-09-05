@@ -48,7 +48,7 @@ export default function ExpenseRecord({ navigation }) {
                 ❮
                 </Text>
 
-                <Text style = {{fontSize: 23, fontWeight: 'bold',}}>{month}</Text>
+                <Text style = {{fontSize: 18, fontWeight: 'bold',}}>{month}</Text>
 
                 <Text style = {styles.monthText} onPress = {() => NextMonth()}>
                 ❯
@@ -109,12 +109,12 @@ const styles = StyleSheet.create({
     },
 
     monthText: {
-        fontSize: 30,
+        fontSize: 18,
         fontWeight: 'bold',
     },
 
     dateBoxText: {
-        fontSize: 18,
+        fontSize: 16,
         margin: 10,
         //marginHorizontal: 20,
     },

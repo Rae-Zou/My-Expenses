@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import ExpenseRecord from '../components/ExpenseRecord';
-import ExpenseRecordMoreDetails from "../screens/ExpenseRecordMoreDetails";
+import ExpenseRecord from '../screens/ExpenseRecordScreen';
+import ExpenseRecordMoreDetails from "../screens/MoreDetailsScreen";
 
 const Stack = createStackNavigator();
 

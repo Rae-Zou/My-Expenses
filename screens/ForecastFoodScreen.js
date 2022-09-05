@@ -5,7 +5,8 @@ import {calcostDict, calForecastData} from '../database/ForecastData';
 export default function ForecastFoodScreen({ navigation }) {
 var costDict = calcostDict();
 var total = calForecastData();
-var prob = ((costDict["Food"]/(total))*100).toFixed(2);
+console.log(costDict["Food"]);
+var prob = ((Number(costDict["Food"])/Number(total))*100).toFixed(2);
     return (
         
         <View style={styles.container}>
@@ -31,13 +32,13 @@ const styles =  StyleSheet.create({
     },
     paragraph: {
       marginTop: 8,
-      fontSize: 18,
+      fontSize: 16,
       color: "#595D58",
       justifyContent: "space-between",
     },
     paragraph2: {
         marginTop: 2,
-        fontSize: 17,
+        fontSize: 16,
         color: "#595D58",
         justifyContent: "space-between",
       },
