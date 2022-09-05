@@ -4,9 +4,6 @@ import {RefreshControl, SafeAreaView, ScrollView, View, Text, StyleSheet, Dimens
 import ListItem  from "../components/ListItem";
 import {calForecastData, calcosts, calmonthDays, calcostDict} from "../database/ForecastData";
 
-const wait = (timeout) => {
-  return new Promise(resolve => setTimeout(resolve, timeout));
-}
 
 // total cost of each category input data
 var costDict = calcostDict();
@@ -51,10 +48,13 @@ const data = {
 
 
 export default function ForecastScreen({ navigation }) {
+  const wait = (timeout) => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
+  }  
   const [refreshing, setRefreshing] = React.useState(false);
   const onRefresh = React.useCallback(() => {
                                               setRefreshing(true);
-                                              wait(2000).then(() => setRefreshing(false));
+                                              wait(100).then(() => setRefreshing(false));
                                             }, []);
   const rowItems = [
     {

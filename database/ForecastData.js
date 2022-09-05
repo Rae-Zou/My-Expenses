@@ -1,5 +1,6 @@
 import {getAllData} from "../database/Database";
 
+
 var total_cost = 0;
 var costs = [];
 const now = new Date();
