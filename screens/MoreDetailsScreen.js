@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, Text, StyleSheet, RefreshControl, ScrollView } from 'react-native';
 import {getTotal, getDataOnDate} from "../database/Database";
 
+var ind = 1;
 
 export default function ExpenseRecordMoreDetails({route, navigation }) {
 
@@ -66,25 +67,22 @@ export default function ExpenseRecordMoreDetails({route, navigation }) {
         )
     }
 
+    const Item = (data) => {
+        return(
+        <View style = {styles.ItemArea}>
+            <Text style = {styles.Text}>{data['category']}: {data['name']}</Text>  
+            <Text style = {styles.Text}>$ {data.price}</Text>
+        </View> 
+        ) 
+    }
+
     const getMapList = (list_data) => {
-        var new_list = [];
         var ind = 1;
-
-        list_data.map((data) => {
-            data['key'] = ind;
-            ind = ind+1;
-
-            new_list.push({key: ind, value: data})
-        })
-
-        console.log(new_list);
-        return new_list.map((data) => {
-          return (
-            <View style = {styles.ItemArea}>
-                <Text key={data.key} style = {styles.Text}>{data.value['categroy']}: {data.value['name']}</Text>  
-                <Text key={data.key+1} style = {styles.Text}>$ {data['price']}</Text>
-            </View>   
-          )
+        return list_data.map((data) => {
+            ind = ind +1;
+            return (
+            <Item key={ind} category = {data['categroy']} name = {data['name']} price= {data['price']} />            
+            )
         })
 
     }
