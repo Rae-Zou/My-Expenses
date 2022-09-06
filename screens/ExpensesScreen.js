@@ -39,17 +39,16 @@ export default function ExpensesScreen({ navigation }) {
 
   const [selected, setSelected] = React.useState("1 August 2022 - Monday");
 
-  //let expenses = getDataOnDate('2 August 2022');
   const [expenses, setExpenses] = React.useState([])
   
   const select_list_data = [
-    {key:'1 August 2022',value:'1 August 2022 - Monday'},
-    {key:'2 August 2022',value:'2 August 2022 - Tuesday'},
-    {key:'3 August 2022',value:'3 August 2022 - Wednesday'},
-    {key:'4 August 2022',value:'4 August 2022 - Thursday'},
-    {key:'5 August 2022',value:'5 August 2022 - Friday'},
-    {key:'6 August 2022',value:'6 August 2022 - Saturday'},
-    {key:'7 August 2022',value:'7 August 2022 - Sunday'},
+    {key:'5 September 2022',value:'5 September 2022 - Monday'},
+    {key:'6 September 2022',value:'6 September 2022 - Tuesday'},
+    {key:'7 September 2022',value:'7 September 2022 - Wednesday'},
+    {key:'8 September 2022',value:'8 September 2022 - Thursday'},
+    {key:'9 September 2022',value:'9 September 2022 - Friday'},
+    {key:'10 September 2022',value:'10 September 2022 - Saturday'},
+    {key:'11 September 2022',value:'11 September 2022 - Sunday'},
   ];
 
   const getDataOnDay = (date) =>{
@@ -61,10 +60,12 @@ export default function ExpensesScreen({ navigation }) {
   const updateCategory = (object) => {
     if(object['categroy'] == 'Rent'){
       object['categroy'] = '🏠';
+      object['category'] = 'Rent';
     }
 
     if(object['categroy'] == 'Food'){
       object['categroy'] = '🍴';
+      object['category'] = 'Food';
     }
 
     if(object['categroy'] == 'Power'){
@@ -74,10 +75,12 @@ export default function ExpensesScreen({ navigation }) {
 
     if(object['categroy'] == 'Transport'){
       object['categroy'] = '🚌';
+      object['category'] = 'Transport';
     }
 
     if(object['categroy'] == 'Other'){
       object['categroy'] = '🔧';
+      object['category'] = 'Other';
     }
   }
   const wait = (timeout) => {

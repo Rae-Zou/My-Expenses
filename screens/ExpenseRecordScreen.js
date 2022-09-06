@@ -47,7 +47,7 @@ export default function ExpenseRecord({ navigation }) {
 	}
 
     return(
-        <View style = {{backgroundColor: 'white'}}>
+        <View style = {{backgroundColor: 'white', flex: 1}}>
             <View style = {styles.container}>
                 <Text style = {styles.monthText} onPress = {() => PrevMonth()}>
                 ❮
