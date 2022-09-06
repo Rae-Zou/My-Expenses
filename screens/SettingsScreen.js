@@ -39,7 +39,7 @@ export default function SettingsScreen({ navigation }) {
     const socialMedia = [
         {
             iconName: "github",
-            url: "https://github.com/Rae-Zou", //TODO: update the url 
+            url: "https://github.com/Rae-Zou/My-Expenses",  
         },
         {
             iconName: "figma",
